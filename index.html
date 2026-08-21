@@ -1,0 +1,2455 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CHS Club Match | Conant High School Student Activities</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        navy: {
+                            50: '#f0f4f9',
+                            100: '#d9e2f1',
+                            200: '#b7cae4',
+                            300: '#8caad3',
+                            400: '#5f84c0',
+                            500: '#3f62ab',
+                            600: '#2c4b8e',
+                            700: '#233b73',
+                            800: '#00205b', // CHS Navy Primary
+                            900: '#00143b', // Deep Navy
+                            950: '#070d1e',
+                        },
+                        scarlet: {
+                            50: '#fef2f2',
+                            100: '#ffe1e1',
+                            200: '#ffc7c7',
+                            300: '#ffa0a0',
+                            400: '#f86e6e',
+                            500: '#ef4444',
+                            600: '#cc0000', // CHS Scarlet Primary
+                            700: '#a30000',
+                            800: '#800000',
+                            900: '#680707',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        heading: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Custom scrollbar styling */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F1F5F9;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #94A3B8;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #64748B;
+        }
+        
+        /* Glassmorphism & UI Accents */
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.82);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.7);
+        }
+        .glass-panel-dark {
+            background: rgba(11, 29, 58, 0.88);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+        }
+        .gradient-navy {
+            background: linear-gradient(135deg, #00143B 0%, #00205B 50%, #0B1D3A 100%);
+        }
+        .gradient-scarlet {
+            background: linear-gradient(135deg, #EF4444 0%, #CC0000 60%, #990000 100%);
+        }
+        .gradient-hero {
+            background: radial-gradient(circle at 85% 15%, rgba(204, 0, 0, 0.28) 0%, transparent 45%),
+                        radial-gradient(circle at 15% 85%, rgba(16, 42, 67, 0.45) 0%, transparent 55%),
+                        linear-gradient(135deg, #00143B 0%, #00205B 50%, #0B1D3A 100%);
+        }
+        .glow-scarlet {
+            box-shadow: 0 8px 25px -5px rgba(204, 0, 0, 0.35);
+        }
+        .glow-navy {
+            box-shadow: 0 10px 30px -5px rgba(0, 32, 91, 0.3);
+        }
+        @keyframes floatSlow {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(2deg); }
+        }
+        .animate-float {
+            animation: floatSlow 7s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-100 text-slate-800 font-sans min-h-screen flex flex-col selection:bg-scarlet-600 selection:text-white bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px]">
+
+    <!-- Sticky Navigation Header -->
+    <header class="sticky top-0 z-30 bg-navy-900/90 backdrop-blur-xl text-white shadow-xl border-b border-scarlet-600/70 transition-all duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Logo & Title -->
+                <div class="flex items-center space-x-3 cursor-pointer group" onclick="navigateTo('start')">
+                    <div class="w-11 h-11 gradient-scarlet text-white rounded-xl flex items-center justify-center font-heading font-extrabold text-2xl shadow-lg shadow-scarlet-600/30 transform group-hover:rotate-6 group-hover:scale-105 transition-all">
+                        C
+                    </div>
+                    <div>
+                        <div class="flex items-center space-x-2">
+                            <span class="font-heading font-bold text-xl tracking-tight text-white group-hover:text-scarlet-100 transition-colors">CHS Club Match</span>
+                            <span class="gradient-scarlet text-white text-[10px] font-extrabold px-2 py-0.5 rounded-full uppercase tracking-wider shadow-sm">Cougars</span>
+                        </div>
+                        <p class="text-xs text-navy-200 hidden sm:block">Conant High School Student Activities</p>
+                    </div>
+                </div>
+
+                <!-- Navigation Tabs -->
+                <nav class="hidden md:flex items-center space-x-2">
+                    <button onclick="navigateTo('start')" id="nav-start" class="px-3.5 py-2 rounded-xl text-sm font-medium hover:bg-white/10 transition border border-transparent">
+                        <i class="fa-solid fa-house mr-1.5 text-navy-200"></i>Home
+                    </button>
+                    <button onclick="navigateTo('quiz')" id="nav-quiz" class="px-3.5 py-2 rounded-xl text-sm font-medium hover:bg-white/10 transition border border-transparent">
+                        <i class="fa-solid fa-wand-magic-sparkles mr-1.5 text-scarlet-400"></i>Club Quiz
+                    </button>
+                    <button onclick="navigateTo('explore')" id="nav-explore" class="px-3.5 py-2 rounded-xl text-sm font-medium hover:bg-white/10 transition border border-transparent">
+                        <i class="fa-solid fa-compass mr-1.5 text-navy-200"></i>Explore All
+                    </button>
+                    <button onclick="openSavedModal()" class="px-3.5 py-2 rounded-xl text-sm font-medium hover:bg-white/10 transition border border-transparent relative">
+                        <i class="fa-solid fa-bookmark mr-1.5 text-yellow-400"></i>Saved
+                        <span id="saved-badge" class="ml-1 bg-scarlet-600 text-white text-xs font-bold px-1.5 py-0.2 rounded-full hidden shadow-md">0</span>
+                    </button>
+                </nav>
+
+                <!-- Always-Present Registration Button (Top Header) -->
+                <button onclick="openRegistrationModal()" class="gradient-scarlet hover:brightness-110 text-white text-sm font-semibold px-4.5 py-2.5 rounded-xl shadow-lg glow-scarlet transition transform hover:-translate-y-0.5 flex items-center space-x-2 border border-scarlet-400/40">
+                    <i class="fa-solid fa-clipboard-check text-base"></i>
+                    <span class="hidden sm:inline">How to Register</span>
+                    <span class="sm:hidden">Register</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8">
+
+        <!-- ================= START SCREEN ================= -->
+        <section id="screen-start" class="space-y-10 transition-all duration-300">
+            <!-- Hero Section -->
+            <div class="gradient-hero rounded-3xl p-8 sm:p-12 text-white relative overflow-hidden shadow-2xl border border-white/15">
+                <!-- Glowing ambient background orbs -->
+                <div class="absolute -right-16 -bottom-16 w-80 h-80 bg-scarlet-600/30 rounded-full blur-3xl animate-pulse"></div>
+                <div class="absolute right-1/3 -top-20 w-72 h-72 bg-blue-500/20 rounded-full blur-3xl"></div>
+
+                <div class="relative z-10 max-w-3xl">
+                    <span class="inline-flex items-center space-x-2 bg-white/10 backdrop-blur-md border border-white/20 text-scarlet-200 text-xs font-bold uppercase tracking-widest px-3.5 py-1.5 rounded-full mb-5 shadow-inner">
+                        <i class="fa-solid fa-star text-yellow-400"></i>
+                        <span>Get Involved at Conant High School</span>
+                    </span>
+                    <h1 class="font-heading text-3xl sm:text-5xl font-extrabold tracking-tight leading-tight mb-4">
+                        Discover Activities That Match <span class="bg-gradient-to-r from-scarlet-400 via-rose-300 to-scarlet-500 bg-clip-text text-transparent underline decoration-scarlet-500/60 underline-offset-8">Your Passion</span>
+                    </h1>
+                    <p class="text-navy-100 text-base sm:text-lg mb-8 leading-relaxed font-light">
+                        With over 80+ clubs, intramurals, academic teams, and student organizations at Conant, there’s a place for everyone! Take our interactive quiz to receive personalized matches or explore our complete catalog.
+                    </p>
+
+                    <!-- Schedule Confirmation Notice -->
+                    <div class="mb-6 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl p-4 text-xs text-navy-100 flex items-center space-x-3">
+                        <i class="fa-solid fa-circle-info text-yellow-300 text-lg shrink-0"></i>
+                        <div>
+                            <strong class="text-white font-semibold">Official Sponsor Directory Updated:</strong> All club sponsor names and email contacts have been updated to the official District 211 directory. Meeting times and room locations are currently set to "To Be Confirmed" while schedules are being finalized.
+                        </div>
+                    </div>
+
+                    <!-- Dual Action Cards -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-5 pt-2">
+                        <!-- Option 1: Take Quiz -->
+                        <button onclick="startQuiz()" class="group relative gradient-scarlet hover:brightness-110 text-white p-6 sm:p-7 rounded-2xl shadow-xl hover:shadow-2xl hover:shadow-scarlet-600/30 transition-all duration-300 transform hover:-translate-y-1.5 text-left border border-scarlet-400/40 flex flex-col justify-between overflow-hidden">
+                            <div class="relative z-10">
+                                <div class="w-12 h-12 bg-white/15 backdrop-blur-md rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-white/20">
+                                    <i class="fa-solid fa-wand-magic-sparkles text-2xl text-yellow-300"></i>
+                                </div>
+                                <h3 class="font-heading text-xl font-bold mb-1">Take Club Match Quiz</h3>
+                                <p class="text-scarlet-100 text-sm font-light">Answer 6 quick questions to find your top 3-5 activity recommendations.</p>
+                            </div>
+                            <div class="relative z-10 mt-6 flex items-center text-sm font-bold text-white group-hover:translate-x-1.5 transition-transform">
+                                Start Quiz Now <i class="fa-solid fa-arrow-right ml-2 text-yellow-300"></i>
+                            </div>
+                        </button>
+
+                        <!-- Option 2: Explore Activities -->
+                        <button onclick="navigateTo('explore')" class="group relative glass-panel-dark hover:bg-navy-900/95 text-white p-6 sm:p-7 rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1.5 text-left border border-white/15 flex flex-col justify-between overflow-hidden">
+                            <div class="relative z-10">
+                                <div class="w-12 h-12 bg-white/10 backdrop-blur-md rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform border border-white/10">
+                                    <i class="fa-solid fa-compass text-2xl text-sky-300"></i>
+                                </div>
+                                <h3 class="font-heading text-xl font-bold mb-1">Explore All Activities</h3>
+                                <p class="text-navy-200 text-sm font-light">Browse the full list of clubs categorized by Intramurals, STEM, Arts, Service & more.</p>
+                            </div>
+                            <div class="relative z-10 mt-6 flex items-center text-sm font-bold text-sky-200 group-hover:text-white group-hover:translate-x-1.5 transition-transform">
+                                Browse Categories <i class="fa-solid fa-arrow-right ml-2"></i>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Stats Bar -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                <div class="glass-panel p-5 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-white/80">
+                    <div class="w-12 h-12 rounded-xl gradient-navy text-white flex items-center justify-center text-xl font-bold shadow-md">
+                        <i class="fa-solid fa-users"></i>
+                    </div>
+                    <div>
+                        <div class="font-heading font-extrabold text-2xl text-navy-900">80+</div>
+                        <div class="text-xs text-slate-500 font-medium">Clubs & Activities</div>
+                    </div>
+                </div>
+                <div class="glass-panel p-5 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-white/80">
+                    <div class="w-12 h-12 rounded-xl gradient-scarlet text-white flex items-center justify-center text-xl font-bold shadow-md">
+                        <i class="fa-solid fa-layer-group"></i>
+                    </div>
+                    <div>
+                        <div class="font-heading font-extrabold text-2xl text-navy-900">7</div>
+                        <div class="text-xs text-slate-500 font-medium">Interest Categories</div>
+                    </div>
+                </div>
+                <div class="glass-panel p-5 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-white/80">
+                    <div class="w-12 h-12 rounded-xl gradient-navy text-white flex items-center justify-center text-xl font-bold shadow-md">
+                        <i class="fa-solid fa-calendar-check"></i>
+                    </div>
+                    <div>
+                        <div class="font-heading font-extrabold text-2xl text-navy-900">Weekly</div>
+                        <div class="text-xs text-slate-500 font-medium">Meetings & Games</div>
+                    </div>
+                </div>
+                <div class="glass-panel p-5 rounded-2xl shadow-sm hover:shadow-md transition flex items-center space-x-4 border border-white/80">
+                    <div class="w-12 h-12 rounded-xl gradient-scarlet text-white flex items-center justify-center text-xl font-bold shadow-md">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <div>
+                        <div class="font-heading font-extrabold text-2xl text-navy-900">100%</div>
+                        <div class="text-xs text-slate-500 font-medium">Cougar Pride</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Popular Category Shortcuts -->
+            <div class="glass-panel rounded-3xl p-8 shadow-md border border-white/80">
+                <div class="flex flex-col md:flex-row md:items-center justify-between mb-6 gap-4">
+                    <div>
+                        <h2 class="font-heading text-2xl font-bold text-navy-900">Explore Categories</h2>
+                        <p class="text-sm text-slate-500">Jump directly to student organizations & intramurals in your favorite domain</p>
+                    </div>
+                    <button onclick="navigateTo('explore')" class="text-scarlet-600 hover:text-scarlet-700 text-sm font-bold flex items-center space-x-1 group">
+                        <span>See all activities</span>
+                        <i class="fa-solid fa-chevron-right text-xs group-hover:translate-x-1 transition-transform"></i>
+                    </button>
+                </div>
+
+                <div class="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3.5" id="quick-category-grid">
+                    <!-- Dynamic Category Cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= QUIZ SCREEN ================= -->
+        <section id="screen-quiz" class="hidden max-w-3xl mx-auto space-y-6 transition-all duration-300">
+            <!-- Progress Header -->
+            <div class="glass-panel rounded-2xl p-6 shadow-sm border border-white/80">
+                <div class="flex items-center justify-between mb-4">
+                    <button onclick="navigateTo('start')" class="text-xs font-semibold text-slate-500 hover:text-navy-900 flex items-center transition">
+                        <i class="fa-solid fa-arrow-left mr-1.5"></i> Exit Quiz
+                    </button>
+                    <span class="text-xs font-bold text-scarlet-600 bg-scarlet-50/80 backdrop-blur-sm px-3.5 py-1 rounded-full uppercase tracking-wider border border-scarlet-200" id="quiz-step-indicator">
+                        Question 1 of 6
+                    </span>
+                </div>
+                
+                <!-- Progress Bar Container -->
+                <div class="w-full bg-slate-200/70 h-2.5 rounded-full overflow-hidden p-0.5">
+                    <div id="quiz-progress-bar" class="gradient-scarlet h-full rounded-full transition-all duration-500 w-1/6 shadow-sm"></div>
+                </div>
+            </div>
+
+            <!-- Question Card -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-10 shadow-xl border border-white/80 relative overflow-hidden">
+                <div id="quiz-question-container">
+                    <!-- Question title and options rendered dynamically via JS -->
+                </div>
+
+                <!-- Navigation Controls -->
+                <div class="flex items-center justify-between mt-8 pt-6 border-t border-slate-200/60">
+                    <button id="quiz-prev-btn" onclick="prevQuestion()" class="px-5 py-2.5 rounded-xl border border-slate-300 text-slate-600 font-medium text-sm hover:bg-slate-100/60 transition disabled:opacity-40 disabled:cursor-not-allowed">
+                        <i class="fa-solid fa-chevron-left mr-2"></i> Previous
+                    </button>
+                    <button id="quiz-next-btn" onclick="nextQuestion()" disabled class="px-6 py-2.5 rounded-xl gradient-navy hover:brightness-110 text-white font-semibold text-sm transition shadow-lg disabled:opacity-40 disabled:cursor-not-allowed">
+                        Next <i class="fa-solid fa-chevron-right ml-2"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- ================= QUIZ RESULTS SCREEN ================= -->
+        <section id="screen-results" class="hidden space-y-8 transition-all duration-300">
+            <!-- Results Banner -->
+            <div class="gradient-hero rounded-3xl p-8 sm:p-10 text-white shadow-xl relative overflow-hidden border border-white/15 text-center sm:text-left">
+                <div class="flex flex-col sm:flex-row items-center justify-between gap-6 relative z-10">
+                    <div>
+                        <span class="inline-block bg-scarlet-600/80 text-white text-xs font-bold uppercase tracking-widest px-3.5 py-1 rounded-full mb-3 border border-scarlet-400/40">
+                            Match Complete!
+                        </span>
+                        <h2 class="font-heading text-3xl font-extrabold text-white">Your Top Club Matches</h2>
+                        <p class="text-navy-100 text-sm mt-1 max-w-xl">Based on your answers, here are 3-5 student activities at Conant High School that align best with your passions and schedule.</p>
+                    </div>
+                    <div class="flex items-center space-x-3 shrink-0">
+                        <button onclick="startQuiz()" class="px-4 py-2.5 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-xs transition border border-white/20">
+                            <i class="fa-solid fa-rotate-right mr-1.5"></i> Retake Quiz
+                        </button>
+                        <button onclick="navigateTo('explore')" class="px-4 py-2.5 rounded-xl gradient-scarlet text-white font-semibold text-xs transition shadow-md hover:brightness-110">
+                            Explore All
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Top Recommendations Grid -->
+            <div id="results-cards-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Match cards rendered dynamically -->
+            </div>
+        </section>
+
+        <!-- ================= EXPLORE ACTIVITIES SCREEN ================= -->
+        <section id="screen-explore" class="hidden space-y-6 transition-all duration-300">
+            <!-- Search & Filter Controls -->
+            <div class="glass-panel rounded-3xl p-6 sm:p-8 shadow-md border border-white/80 space-y-5">
+                <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+                    <div>
+                        <h2 class="font-heading text-2xl font-bold text-navy-900">Explore Student Activities</h2>
+                        <p class="text-xs text-slate-500" id="explore-results-count">Showing all activities</p>
+                    </div>
+
+                    <!-- Search Input -->
+                    <div class="relative w-full md:w-80">
+                        <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
+                        <input type="text" id="club-search-input" oninput="renderExploreGrid()" placeholder="Search clubs, sports, sponsors..." class="w-full pl-10 pr-4 py-2.5 text-sm rounded-xl border border-slate-200 bg-white/90 focus:outline-none focus:ring-2 focus:ring-scarlet-500 focus:border-transparent transition shadow-sm">
+                    </div>
+                </div>
+
+                <!-- Category Pills Filter Bar -->
+                <div class="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none" id="category-pills-container">
+                    <!-- Filter pills rendered dynamically -->
+                </div>
+            </div>
+
+            <!-- Explore Cards Grid -->
+            <div id="explore-clubs-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Club Cards dynamically injected -->
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Registration Footer CTA Bar (Always Accessible) -->
+    <footer class="bg-navy-950 text-white border-t border-navy-800 py-8 mt-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div class="flex items-center space-x-3 text-center sm:text-left">
+                <div class="w-10 h-10 gradient-scarlet rounded-xl flex items-center justify-center font-bold text-lg text-white shrink-0">
+                    <i class="fa-solid fa-graduation-cap"></i>
+                </div>
+                <div>
+                    <p class="font-heading font-bold text-sm text-white">Ready to join a club at Conant?</p>
+                    <p class="text-xs text-slate-400">View registration steps and requirements for CHS student activities.</p>
+                </div>
+            </div>
+            <button onclick="openRegistrationModal()" class="gradient-scarlet hover:brightness-110 text-white font-semibold text-xs px-5 py-3 rounded-xl shadow-lg glow-scarlet transition shrink-0 flex items-center space-x-2 border border-scarlet-400/40">
+                <i class="fa-solid fa-clipboard-check text-sm"></i>
+                <span>View Registration Guide</span>
+            </button>
+        </div>
+    </footer>
+
+    <!-- ================= DETAIL MODAL / DRAWER ================= -->
+    <div id="modal-detail" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/70 backdrop-blur-md hidden transition-all duration-300">
+        <div class="glass-panel bg-white/95 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-white/80 max-h-[90vh] overflow-y-auto relative animate-float shadow-navy-900/50" style="animation-duration: 0s;">
+            <!-- Close Button -->
+            <button onclick="closeModal('modal-detail')" class="absolute top-6 right-6 w-9 h-9 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div id="modal-detail-content">
+                <!-- Dynamic Club Details populated here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= REGISTRATION INSTRUCTIONS MODAL ================= -->
+    <div id="modal-registration" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/70 backdrop-blur-md hidden transition-all duration-300">
+        <div class="glass-panel bg-white/95 rounded-3xl max-w-3xl w-full p-6 sm:p-8 shadow-2xl border border-white/80 max-h-[90vh] overflow-y-auto relative">
+            <button onclick="closeModal('modal-registration')" class="absolute top-6 right-6 w-9 h-9 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="space-y-6">
+                <!-- Header -->
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 gradient-scarlet rounded-2xl flex items-center justify-center text-white text-xl shadow-md">
+                        <i class="fa-solid fa-clipboard-check"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-heading text-2xl font-bold text-navy-900">Infinite Campus Activity Registration</h2>
+                        <p class="text-xs text-slate-500">Step-by-step guide to register for Conant High School clubs & activities</p>
+                    </div>
+                </div>
+
+                <!-- Registration Requirement Callout Banner -->
+                <div class="p-4 rounded-2xl bg-scarlet-50/90 border border-scarlet-200 text-scarlet-950 text-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-sm">
+                    <div class="flex items-center space-x-3">
+                        <div class="w-8 h-8 rounded-xl gradient-scarlet text-white flex items-center justify-center text-sm shrink-0">
+                            <i class="fa-solid fa-circle-exclamation"></i>
+                        </div>
+                        <div>
+                            <strong class="font-bold text-scarlet-900">Registration is Mandatory!</strong>
+                            <p class="text-slate-600 text-[11px] mt-0.5">Students must complete Infinite Campus registration & signed waivers after initial club meetings to participate.</p>
+                        </div>
+                    </div>
+                    <a href="https://adc.d211.org" target="_blank" rel="noopener noreferrer" class="px-3.5 py-2 rounded-xl gradient-navy text-white text-xs font-bold shrink-0 hover:brightness-110 transition flex items-center space-x-1.5 shadow-md">
+                        <span>Open Infinite Campus</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                </div>
+
+                <!-- Interactive Step-by-Step Walkthrough -->
+                <div class="space-y-3">
+                    <h3 class="font-heading text-xs font-bold text-slate-400 uppercase tracking-wider">Registration Steps</h3>
+
+                    <!-- Step 1 -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-navy-300 transition shadow-sm">
+                        <div class="flex items-start space-x-3.5">
+                            <span class="w-8 h-8 rounded-xl gradient-navy text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">1</span>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-sm text-navy-900">Log In & Navigate to Activity Registration</h4>
+                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                    Log into your <strong class="text-navy-900">Infinite Campus Student Portal</strong> (or Parent Portal). Open the side menu and go to:
+                                </p>
+                                <div class="mt-2 inline-flex flex-wrap items-center gap-1.5 bg-white px-3 py-2 rounded-xl border border-slate-200 text-xs text-slate-700 font-mono">
+                                    <span>Menu</span>
+                                    <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+                                    <span>Products</span>
+                                    <i class="fa-solid fa-chevron-right text-[10px] text-slate-400"></i>
+                                    <span class="bg-scarlet-50 text-scarlet-700 font-bold px-1.5 py-0.5 rounded border border-scarlet-200">Activity Student Reg</span>
+                                </div>
+                                <p class="text-[11px] text-slate-500 mt-1.5">
+                                    <i class="fa-solid fa-info-circle text-navy-600 mr-1"></i>Parents can also select <strong>Activity Parent Reg</strong> or go through <strong>School Store ➔ Activity Registration</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 2 -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-navy-300 transition shadow-sm">
+                        <div class="flex items-start space-x-3.5">
+                            <span class="w-8 h-8 rounded-xl gradient-navy text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">2</span>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-sm text-navy-900">Select Your Club or Activity</h4>
+                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                    Browse the list of available Conant High School clubs & intramurals (e.g. <em>Ping Pong Club, DECA, Coding Club, Ultimate Frisbee</em>). Click the <strong class="text-navy-900">"View"</strong> button next to the activity you want to join.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 3 -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-navy-300 transition shadow-sm">
+                        <div class="flex items-start space-x-3.5">
+                            <span class="w-8 h-8 rounded-xl gradient-scarlet text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">3</span>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-sm text-navy-900">Complete Required District 211 Waivers</h4>
+                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                    Select the Recipient (Student Name) and review/acknowledge the mandatory forms:
+                                </p>
+                                <ul class="mt-2 space-y-1.5 text-xs text-slate-700 bg-white p-3 rounded-xl border border-slate-200">
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fa-solid fa-check text-scarlet-600 text-xs"></i>
+                                        <span><strong>Concussion Care Information & Acknowledgment</strong> (IHSA / District Policy)</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fa-solid fa-check text-scarlet-600 text-xs"></i>
+                                        <span><strong>Academic Eligibility Policy</strong> (Must pass 5 academic courses weekly & maintain 2.0 GPA)</span>
+                                    </li>
+                                    <li class="flex items-center space-x-2">
+                                        <i class="fa-solid fa-check text-scarlet-600 text-xs"></i>
+                                        <span><strong>District 211 Extracurricular Code of Conduct</strong> (Respectful behavior & substance rules)</span>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Step 4 -->
+                    <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/80 hover:border-navy-300 transition shadow-sm">
+                        <div class="flex items-start space-x-3.5">
+                            <span class="w-8 h-8 rounded-xl gradient-navy text-white font-bold text-xs flex items-center justify-center shrink-0 shadow-sm">4</span>
+                            <div class="flex-1">
+                                <h4 class="font-bold text-sm text-navy-900">Add to Cart & Submit Registration</h4>
+                                <p class="text-xs text-slate-600 mt-1 leading-relaxed">
+                                    Click <strong class="text-navy-900">"Add to Cart"</strong> (Total Price: <strong>$0.00</strong> for standard clubs). Navigate to your Cart/Checkout and click <strong class="text-scarlet-600">"Submit"</strong> to complete your official registration.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer / Support Notes -->
+                <div class="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-950 text-xs flex items-start space-x-3">
+                    <i class="fa-solid fa-circle-question text-amber-600 text-base shrink-0 mt-0.5"></i>
+                    <div>
+                        <strong>Need Help Registering?</strong> Visit the Conant Student Activities Office near the Main Entrance, contact your club sponsor directly, or email the Student Activities Director.
+                    </div>
+                </div>
+
+                <div class="pt-2 flex items-center justify-between">
+                    <a href="https://adc.d211.org" target="_blank" rel="noopener noreferrer" class="text-xs font-bold text-scarlet-600 hover:text-scarlet-700 flex items-center space-x-1">
+                        <span>Go to Infinite Campus Portal</span>
+                        <i class="fa-solid fa-arrow-up-right-from-square text-[10px]"></i>
+                    </a>
+                    <button onclick="closeModal('modal-registration')" class="px-5 py-2.5 gradient-navy text-white font-semibold text-xs rounded-xl shadow-md hover:brightness-110 transition">
+                        Got It!
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ================= SAVED CLUBS MODAL ================= -->
+    <div id="modal-saved" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-navy-950/70 backdrop-blur-md hidden transition-all duration-300">
+        <div class="glass-panel bg-white/95 rounded-3xl max-w-2xl w-full p-6 sm:p-8 shadow-2xl border border-white/80 max-h-[90vh] overflow-y-auto relative">
+            <button onclick="closeModal('modal-saved')" class="absolute top-6 right-6 w-9 h-9 bg-slate-100 hover:bg-slate-200 text-slate-600 rounded-full flex items-center justify-center transition">
+                <i class="fa-solid fa-xmark text-lg"></i>
+            </button>
+
+            <div class="space-y-6">
+                <div class="flex items-center space-x-3">
+                    <div class="w-12 h-12 bg-yellow-100 text-yellow-600 rounded-2xl flex items-center justify-center text-xl shadow-md border border-yellow-200">
+                        <i class="fa-solid fa-bookmark"></i>
+                    </div>
+                    <div>
+                        <h2 class="font-heading text-2xl font-bold text-navy-900">Your Saved Clubs</h2>
+                        <p class="text-xs text-slate-500">Activities you have bookmarked for later</p>
+                    </div>
+                </div>
+
+                <div id="saved-clubs-list-container" class="space-y-3">
+                    <!-- Dynamic saved clubs list -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ================= CONANT HIGH SCHOOL ACTIVITIES DATA =================
+        const ACTIVITIES = [
+            {
+                id: 'aapi-club',
+                name: 'AAPI Club (Asian American Pacific-Islander Club)',
+                category: 'culture',
+                categoryLabel: 'Cultural Clubs',
+                description: 'Celebrate, explore, and promote Asian American and Pacific Islander heritage and culture through community events, discussions, and leadership opportunities.',
+                sponsor: 'Ms. Judy Joung, Mr. Paul Kim',
+                email: 'jjoung@d211.org, pkim@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['aapi', 'culture', 'asian', 'pacific islander', 'diversity', 'community'],
+                commitment: 'low',
+                style: ['social', 'creative'],
+                goals: ['friends', 'trynew']
+            },
+            {
+                id: 'art-club',
+                name: 'Art Club',
+                category: 'finearts',
+                categoryLabel: 'Fine Arts & Performance',
+                description: 'An open studio environment for students interested in drawing, painting, ceramics, design, and creative expression with peers.',
+                sponsor: 'Mrs. Jamie Peterson',
+                email: 'jpeterson@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['art', 'painting', 'drawing', 'creativity', 'studio', 'fine arts'],
+                commitment: 'low',
+                style: ['creative', 'hands-on'],
+                goals: ['trynew', 'friends', 'skills']
+            },
+            {
+                id: 'auto-club',
+                name: 'Auto Club',
+                category: 'making',
+                categoryLabel: 'Making and Building',
+                description: 'Explore automotive mechanics, maintenance, engine repair, and hands-on automotive technology in the CHS applied tech shop.',
+                sponsor: 'Mr. Joe Tullo',
+                email: 'jtullo@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Applied Tech Auto Shop',
+                tags: ['auto', 'mechanics', 'cars', 'hands-on', 'engineering'],
+                commitment: 'medium',
+                style: ['hands-on'],
+                goals: ['skills', 'trynew']
+            },
+            {
+                id: 'bsa',
+                name: 'Black Student Alliance (BSA)',
+                category: 'culture',
+                categoryLabel: 'Cultural Clubs',
+                description: 'Fosters a supportive community celebrating Black history, culture, and achievements through discussions, cultural events, and community advocacy.',
+                sponsor: 'Ms. Vera Bass, Mrs. Ashley Ray',
+                email: 'vbass@d211.org, ajray@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['bsa', 'culture', 'black student alliance', 'diversity', 'community', 'leadership'],
+                commitment: 'low',
+                style: ['social', 'service'],
+                goals: ['friends', 'giveback', 'resume']
+            },
+            {
+                id: 'book-club',
+                name: 'Book Club',
+                category: 'creative',
+                categoryLabel: 'Creative and Special Interest',
+                description: 'Read and discuss diverse literary works, contemporary novels, and graphic novels with fellow student book lovers.',
+                sponsor: 'Ms. Desi Rae Stricker',
+                email: 'dstricker@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Media Center / Library',
+                tags: ['books', 'reading', 'literature', 'discussions', 'media center'],
+                commitment: 'low',
+                style: ['social'],
+                goals: ['friends', 'trynew']
+            },
+            {
+                id: 'broadcast-club',
+                name: 'Broadcast Club',
+                category: 'creative',
+                categoryLabel: 'Creative and Special Interest',
+                description: 'Gain hands-on experience in video production, camera operation, audio editing, and live streaming of school events and announcements.',
+                sponsor: 'Mr. Brian Schroeck',
+                email: 'bschroeck@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Broadcast Studio / Media Center',
+                tags: ['broadcast', 'video', 'tv', 'media', 'camera', 'streaming'],
+                commitment: 'medium',
+                style: ['hands-on', 'creative'],
+                goals: ['skills', 'resume']
+            },
+            {
+                id: 'chess-team',
+                name: 'Chess Team',
+                category: 'competitive',
+                categoryLabel: 'Competitive Clubs',
+                description: 'Develop strategic thinking, learn tactics, practice friendly matches, and represent Conant High School in IHSA chess tournaments.',
+                sponsor: 'Mr. Andy Barrientos, Mr. David Jonen',
+                email: 'abarrientos@d211.org, djonen@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['chess', 'strategy', 'games', 'competitions', 'ihsa'],
+                commitment: 'medium',
+                style: ['competitions', 'social'],
+                goals: ['skills', 'friends']
+            },
+            {
+                id: 'chinese-club',
+                name: 'Chinese Club',
+                category: 'culture',
+                categoryLabel: 'Cultural Clubs',
+                description: 'Discover Chinese culture, traditional celebrations, calligraphy, culinary arts, and language through interactive meetings.',
+                sponsor: 'Ms. Lichien Chan',
+                email: 'lchan@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['chinese', 'culture', 'language', 'diversity', 'food'],
+                commitment: 'low',
+                style: ['social', 'creative'],
+                goals: ['friends', 'trynew']
+            },
+            {
+                id: 'coding-club',
+                name: 'Coding Club (CompSci Kids)',
+                category: 'making',
+                categoryLabel: 'Making and Building',
+                description: 'Learn programming (Python, Java, Web Dev), collaborate on software engineering projects, build games, and enter hackathons.',
+                sponsor: 'Mr. Richard Cortez, Ms. Mary Toman',
+                email: 'rcortez@d211.org, mtoman@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Computer Lab 214',
+                tags: ['coding', 'computer science', 'programming', 'stem', 'tech', 'software'],
+                commitment: 'medium',
+                style: ['hands-on', 'competitions'],
+                goals: ['skills', 'resume', 'friends']
+            },
+            {
+                id: 'color-guard',
+                name: 'Color Guard (Flags)',
+                category: 'finearts',
+                categoryLabel: 'Fine Arts & Performance',
+                description: 'Perform visual dance routines using flags, rifles, and sabres in synchronization with the Conant High School Marching Band.',
+                sponsor: 'Ms. Desi Rae Stricker, Ms. Terry Prusnick',
+                email: 'dstricker@d211.org, tprusnick@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Main Gym / Football Field',
+                tags: ['color guard', 'flags', 'marching band', 'performance', 'dance'],
+                commitment: 'high',
+                style: ['creative', 'sports_play'],
+                goals: ['friends', 'skills']
+            },
+            {
+                id: 'conant-theatre',
+                name: 'Conant Theatre (Drama Club)',
+                category: 'finearts',
+                categoryLabel: 'Fine Arts & Performance',
+                description: 'Take part on stage or behind the scenes in mainstage theatrical productions, set construction, lighting, sound design, and stage management.',
+                sponsor: 'Mrs. Shayna Adelman, Mrs. Katie Apperson-Skobel, Mr. Benjamin Jones',
+                email: 'sadelman@d211.org, kapperson@d211.org, bjones@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'CHS Auditorium & Scene Shop',
+                tags: ['theatre', 'drama', 'acting', 'stagecraft', 'musicals', 'play', 'arts'],
+                commitment: 'high',
+                style: ['creative', 'hands-on'],
+                goals: ['friends', 'skills', 'trynew']
+            },
+            {
+                id: 'cougar-climb',
+                name: 'Cougar Climb',
+                category: 'sports',
+                categoryLabel: 'Intramural Sports and Fitness',
+                description: 'Experience indoor and outdoor rock climbing, bouldering, technique development, and teamwork challenges for all skill levels.',
+                sponsor: 'Ms. CathyAnn Smith, Mr. Erik Hauser',
+                email: 'casmith@d211.org, ehauser@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['climbing', 'rock climbing', 'outdoors', 'fitness', 'sports', 'recreation'],
+                commitment: 'low',
+                style: ['sports_play', 'hands-on'],
+                goals: ['trynew', 'friends', 'skills']
+            },
+            {
+                id: 'cougars-united',
+                name: 'Cougars United (President’s Forum)',
+                category: 'gov',
+                categoryLabel: 'Student Government',
+                description: 'Leadership forum connecting student leaders across all Conant clubs to collaborate on school culture, cross-club events, and student initiatives.',
+                sponsor: 'Mrs. Jodie Weintraub, Ms. CathyAnn Smith',
+                email: 'jweintraub@d211.org, casmith@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['leadership', 'student voice', 'presidents forum', 'cougars united', 'government'],
+                commitment: 'medium',
+                style: ['social', 'service'],
+                goals: ['resume', 'friends', 'skills']
+            },
+            {
+                id: 'cricket-club',
+                name: 'Cricket Club',
+                category: 'sports',
+                categoryLabel: 'Intramural Sports and Fitness',
+                description: 'Learn and play the game of cricket, practice batting and bowling techniques, and participate in friendly intramural matches.',
+                sponsor: 'Ms. Attiya Mirza',
+                email: 'amirza@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['cricket', 'sports', 'intramurals', 'recreation', 'fitness'],
+                commitment: 'low',
+                style: ['sports_play', 'social'],
+                goals: ['friends', 'trynew', 'skills']
+            },
+            {
+                id: 'crier-newspaper',
+                name: 'Crier (Newspaper)',
+                category: 'creative',
+                categoryLabel: 'Creative and Special Interest',
+                description: 'Report, write, edit, and publish Conant High School’s official student newspaper covering student news, sports, opinions, and feature stories.',
+                sponsor: 'Mr. David Gwizdala, Ms. Becky Schomer',
+                email: 'dgwizdala@d211.org, bschomer@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['newspaper', 'journalism', 'crier', 'writing', 'reporting', 'media'],
+                commitment: 'medium',
+                style: ['creative', 'hands-on'],
+                goals: ['resume', 'skills']
+            },
+            {
+                id: 'crochet-club',
+                name: 'Crochet Club',
+                category: 'creative',
+                categoryLabel: 'Creative and Special Interest',
+                description: 'Learn crochet and knitting patterns, create handmade items, work on personal craft projects, and donate handmade blankets and beanies to charity.',
+                sponsor: 'Mrs. Jamie Peterson',
+                email: 'jpeterson@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['crochet', 'knitting', 'crafts', 'diy', 'creativity', 'service'],
+                commitment: 'low',
+                style: ['creative', 'hands-on', 'social'],
+                goals: ['trynew', 'friends', 'giveback']
+            },
+            {
+                id: 'culinary-arts-club',
+                name: 'Culinary Arts Club (Formerly Foods)',
+                category: 'creative',
+                categoryLabel: 'Creative and Special Interest',
+                description: 'Explore culinary techniques, international recipes, baking skills, and kitchen safety in a fun group cooking environment.',
+                sponsor: 'Mrs. Fatima Candia',
+                email: 'fcandia@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Foods Lab',
+                tags: ['cooking', 'culinary', 'baking', 'food', 'hands-on', 'recipes'],
+                commitment: 'low',
+                style: ['hands-on', 'social'],
+                goals: ['trynew', 'skills', 'friends']
+            },
+            {
+                id: 'cultural-awareness-club',
+                name: 'Cultural Awareness Club',
+                category: 'culture',
+                categoryLabel: 'Cultural Clubs',
+                description: 'Promote cultural education, inclusivity, and diversity across the CHS community through multicultural celebrations and global discussions.',
+                sponsor: 'Mrs. Amy Spizzirri, Mr. Patrick Malloy, Ms. Brittany Potts',
+                email: 'amspizzirri@d211.org, pmalloy@d211.org, bpotts@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['culture', 'diversity', 'inclusivity', 'global', 'awareness', 'community'],
+                commitment: 'low',
+                style: ['social', 'service'],
+                goals: ['friends', 'giveback', 'trynew']
+            },
+            {
+                id: 'debate-public-forum',
+                name: 'Debate (Public Forum)',
+                category: 'competitive',
+                categoryLabel: 'Competitive Clubs',
+                description: 'Research current global issues, formulate evidence-based arguments, and compete in pairs at regional Public Forum debate competitions.',
+                sponsor: 'Mrs. Elizabeth Dopke-Jimenez, Ms. Vivian Zyrkowski',
+                email: 'edopkejimenez@d211.org, vzyrkowski@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['debate', 'public forum', 'argumentation', 'speaking', 'competitions', 'politics'],
+                commitment: 'high',
+                style: ['competitions', 'debates'],
+                goals: ['resume', 'skills', 'friends']
+            },
+            {
+                id: 'debate-student-congress',
+                name: 'Debate (Student Congress)',
+                category: 'competitive',
+                categoryLabel: 'Competitive Clubs',
+                description: 'Simulate the U.S. legislative process by authoring bills, debating public policy, and mastering parliamentary procedure at interscholastic meets.',
+                sponsor: 'Mr. Gary Schumacher, Mr. John Summers',
+                email: 'gschumacher@d211.org, jsummers@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['debate', 'student congress', 'legislation', 'politics', 'public speaking', 'competitions'],
+                commitment: 'high',
+                style: ['competitions', 'debates'],
+                goals: ['resume', 'skills']
+            },
+            {
+                id: 'digital-media-club',
+                name: 'Digital Media Club (Film Making Club)',
+                category: 'creative',
+                categoryLabel: 'Creative and Special Interest',
+                description: 'Create short films, music videos, digital animations, and documentaries while learning cinematic camera techniques and post-production video editing.',
+                sponsor: 'Mr. Luke Jenner',
+                email: 'tjenner@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['film', 'digital media', 'video editing', 'cinema', 'filmmaking', 'creativity'],
+                commitment: 'medium',
+                style: ['creative', 'hands-on'],
+                goals: ['skills', 'resume', 'trynew']
+            },
+            {
+                id: 'educators-rising-club',
+                name: 'Educators Rising Club',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'For future teachers and educators. Explore careers in education, shadow teaching professionals, and participate in community learning projects.',
+                sponsor: 'Mrs. Angela Drenth',
+                email: 'adrenth@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['education', 'teaching', 'educators rising', 'leadership', 'service', 'careers'],
+                commitment: 'low',
+                style: ['service', 'social'],
+                goals: ['resume', 'skills', 'giveback']
+            },
+            {
+                id: 'electronics-club',
+                name: 'Electronics Club',
+                category: 'making',
+                categoryLabel: 'Making and Building',
+                description: 'Learn circuit design, soldering, microcontrollers (Arduino/Raspberry Pi), and build electronic gadget projects from scratch.',
+                sponsor: 'Mr. Joe Tullo',
+                email: 'jtullo@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Applied Tech Electronics Lab',
+                tags: ['electronics', 'circuits', 'arduino', 'raspberry pi', 'stem', 'engineering'],
+                commitment: 'medium',
+                style: ['hands-on'],
+                goals: ['skills', 'resume', 'trynew']
+            },
+            {
+                id: 'esports',
+                name: 'eSports (Gaming Club)',
+                category: 'creative',
+                categoryLabel: 'Creative and Special Interest',
+                description: 'Compete in organized high school esports leagues (Rocket League, Valorant, Super Smash Bros) or play casually with fellow gamers.',
+                sponsor: 'Mr. John Blonde, Mr. Chris Mattson',
+                email: 'jblonde@d211.org, cmattson@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Media Center / Room 216',
+                tags: ['esports', 'gaming', 'video games', 'competitions', 'tech', 'smash'],
+                commitment: 'medium',
+                style: ['competitions', 'social'],
+                goals: ['friends', 'skills', 'trynew']
+            },
+            {
+                id: 'fbla',
+                name: 'Future Business Leaders of America (FBLA)',
+                category: 'competitive',
+                categoryLabel: 'Competitive Clubs',
+                description: 'Develop real-world leadership and business acumen through regional, state, and national competitions in finance, marketing, economics, and management.',
+                sponsor: 'Mrs. Patti Ertl, Ms. Maren Hilgendorf, Mr. Brian Schroeck, Mrs. Jodie Weintraub',
+                email: 'pertl@d211.org, mhilgendorf@d211.org, bschroeck@d211.org, jweintraub@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['fbla', 'business', 'finance', 'marketing', 'leadership', 'competitions'],
+                commitment: 'high',
+                style: ['competitions', 'hands-on'],
+                goals: ['resume', 'skills', 'friends']
+            },
+            {
+                id: 'fccla',
+                name: 'FCCLA (Family, Career and Community Leaders of America)',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Focus on personal growth, leadership, culinary arts, early childhood education, and family/community wellness through service projects and competitions.',
+                sponsor: 'Mrs. Jacqueline Brown',
+                email: 'jbrown@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['fccla', 'community', 'family', 'leadership', 'service', 'competitions'],
+                commitment: 'medium',
+                style: ['service', 'hands-on'],
+                goals: ['resume', 'giveback', 'skills']
+            },
+            {
+                id: 'fellowship-christian-students',
+                name: 'Fellowship for Christian Students',
+                category: 'culture',
+                categoryLabel: 'Cultural Clubs',
+                description: 'Student-led faith community providing encouragement, fellowship, Bible study, and service projects for students of faith.',
+                sponsor: 'Mr. Matt Meyer, Mrs. Lori Stella, Ms. Grace Gibbs',
+                email: 'mmeyer@d211.org, lstella@d211.org, ggibbs@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['faith', 'christian', 'fellowship', 'community', 'service'],
+                commitment: 'low',
+                style: ['social', 'service'],
+                goals: ['friends', 'giveback']
+            },
+            {
+                id: 'finance-club',
+                name: 'Finance Club',
+                category: 'competitive',
+                categoryLabel: 'Competitive Clubs',
+                description: 'Learn stock market investing, personal financial literacy, portfolio management, and participate in virtual stock trading competitions.',
+                sponsor: 'Mr. Tony Miller',
+                email: 'amiller@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['finance', 'stocks', 'investing', 'economics', 'business', 'competitions'],
+                commitment: 'medium',
+                style: ['competitions', 'hands-on'],
+                goals: ['skills', 'resume']
+            },
+            {
+                id: 'fishing-club',
+                name: 'Fishing Club',
+                category: 'sports',
+                categoryLabel: 'Intramural Sports and Fitness',
+                description: 'Learn angling techniques, tackle preparation, fish species identification, and take part in local fishing outings and conservation activities.',
+                sponsor: 'Mr. Dave Cromer',
+                email: 'dcromer@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['fishing', 'outdoors', 'recreation', 'nature', 'sports'],
+                commitment: 'low',
+                style: ['sports_play', 'hands-on', 'social'],
+                goals: ['trynew', 'friends']
+            },
+            {
+                id: 'freshman-class-council',
+                name: 'Freshman Class Council',
+                category: 'gov',
+                categoryLabel: 'Student Government',
+                description: 'Represent the 9th-grade class! Plan freshman spirit events, homecoming parade floats, fundraisers, and build class unity.',
+                sponsor: 'Mrs. Katherine Koopman',
+                email: 'kkoopman@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['freshman', 'class council', 'government', 'leadership', 'events', '9th grade'],
+                commitment: 'medium',
+                style: ['social', 'hands-on'],
+                goals: ['friends', 'resume', 'skills']
+            },
+            {
+                id: 'friends-of-conant-jews',
+                name: 'Friends of Conant Jews',
+                category: 'culture',
+                categoryLabel: 'Cultural Clubs',
+                description: 'Celebrate Jewish heritage, traditions, and culture through discussions, holiday celebrations, and open cultural exchange.',
+                sponsor: 'Mrs. Bina Rubinson',
+                email: 'brubinson@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['jewish', 'culture', 'heritage', 'diversity', 'community'],
+                commitment: 'low',
+                style: ['social'],
+                goals: ['friends', 'trynew']
+            },
+            {
+                id: 'tabletop-gaming-club',
+                name: 'Gaming Club (Dungeons & Dragons, etc.)',
+                category: 'creative',
+                categoryLabel: 'Creative and Special Interest',
+                description: 'Gather to play tabletop roleplaying games like D&D, strategy board games, card games (Magic: The Gathering), and social games.',
+                sponsor: 'Mr. Dave Torpe, Mr. Josh Harbeck, Mr. Luke Jenner',
+                email: 'dtorpe@d211.org, jharbeck@d211.org, tjenner@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['dnd', 'dungeons and dragons', 'board games', 'gaming', 'tabletop', 'rpg'],
+                commitment: 'low',
+                style: ['social', 'creative'],
+                goals: ['friends', 'trynew']
+            },
+            {
+                id: 'geography-club',
+                name: 'Geography Club',
+                category: 'creative',
+                categoryLabel: 'Creative and Special Interest',
+                description: 'Explore world geography, cultural cartography, map trivia, and compete in geography bowl competitions.',
+                sponsor: 'Ms. Samantha Serrano',
+                email: 'sserrano@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['geography', 'maps', 'world', 'trivia', 'culture', 'academics'],
+                commitment: 'low',
+                style: ['social', 'competitions'],
+                goals: ['skills', 'trynew']
+            },
+            {
+                id: 'german-club',
+                name: 'German Club',
+                category: 'culture',
+                categoryLabel: 'Cultural Clubs',
+                description: 'Experience German language, Oktoberfest traditions, culinary specialties, and cultural exchange opportunities.',
+                sponsor: 'Ms. Amber Wozniak',
+                email: 'awozniak@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['german', 'culture', 'language', 'food', 'tradition'],
+                commitment: 'low',
+                style: ['social', 'creative'],
+                goals: ['friends', 'trynew']
+            },
+            {
+                id: 'greek-club',
+                name: 'Greek Club',
+                category: 'culture',
+                categoryLabel: 'Cultural Clubs',
+                description: 'Share and celebrate Greek culture, history, cuisine, traditional dance, and community outreach for all interested students.',
+                sponsor: 'Mrs. Angela Drenth, Mrs. Maria Kandalepas, Ms. Victoria Zervos',
+                email: 'adrenth@d211.org, mkandalepas@d211.org, vzervos@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['greek', 'culture', 'heritage', 'dance', 'food', 'diversity'],
+                commitment: 'low',
+                style: ['social', 'creative'],
+                goals: ['friends', 'trynew']
+            },
+            {
+                id: 'green-cougars-club',
+                name: 'Green Cougars Club (Environmental)',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Promote environmental sustainability, campus recycling, community gardening, climate action, and ecological conservation initiatives.',
+                sponsor: 'Ms. Lisa Zara-Brito',
+                email: 'lzara-brito@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['environment', 'green', 'sustainability', 'recycling', 'nature', 'service'],
+                commitment: 'low',
+                style: ['service', 'hands-on'],
+                goals: ['giveback', 'friends']
+            },
+            {
+                id: 'grill-club',
+                name: 'Grill Club',
+                category: 'creative',
+                categoryLabel: 'Creative and Special Interest',
+                description: 'Learn outdoor grilling safety, barbecue techniques, marinade recipes, and host tailgate barbecues during school events.',
+                sponsor: 'Mr. Tim Harte, Mr. Dave Moravek',
+                email: 'tharte@d211.org, dmoravek@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Outdoor Patio / Applied Tech Area',
+                tags: ['grill', 'bbq', 'cooking', 'food', 'social', 'tailgate'],
+                commitment: 'low',
+                style: ['hands-on', 'social'],
+                goals: ['friends', 'trynew']
+            },
+            {
+                id: 'guitar-club',
+                name: 'Guitar Club',
+                category: 'finearts',
+                categoryLabel: 'Fine Arts & Performance',
+                description: 'Open to acoustic and electric guitar players of all skill levels. Learn chords, tab reading, jam together, and share music tips.',
+                sponsor: 'Mr. Edgar Huerta',
+                email: 'ehuerta@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['guitar', 'music', 'instruments', 'jam', 'fine arts'],
+                commitment: 'low',
+                style: ['creative', 'social'],
+                goals: ['skills', 'friends', 'trynew']
+            },
+            {
+                id: 'hosa',
+                name: 'HOSA (Health Occupations Students of America)',
+                category: 'competitive',
+                categoryLabel: 'Competitive Clubs',
+                description: 'Empowers future health professionals through medical skills competitions, health education, guest medical speakers, and clinical workshops.',
+                sponsor: 'Mrs. Monika Aubin, Ms. Vicky DeGuia',
+                email: 'maubin@d211.org, vdeguia@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['hosa', 'medical', 'healthcare', 'science', 'stem', 'competitions'],
+                commitment: 'medium',
+                style: ['competitions', 'hands-on'],
+                goals: ['resume', 'skills', 'friends']
+            },
+            {
+                id: 'improv',
+                name: 'Improv Club',
+                category: 'finearts',
+                categoryLabel: 'Fine Arts & Performance',
+                description: 'Practice unscripted comedic acting, quick thinking, stage presence, and perform in high-energy improv comedy shows.',
+                sponsor: 'Mrs. Shayna Adelman, Mrs. Katherine Apperson-Skobel',
+                email: 'sadelman@d211.org, kappersonskobel@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'CHS Auditorium Stage',
+                tags: ['improv', 'acting', 'comedy', 'theatre', 'public speaking', 'performance'],
+                commitment: 'medium',
+                style: ['creative', 'social'],
+                goals: ['friends', 'trynew', 'skills']
+            },
+            {
+                id: 'interact-club',
+                name: 'Interact Club',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Community service club sponsored by Rotary International. Plan community service events, volunteer drives, and international humanitarian relief projects.',
+                sponsor: 'Mrs. Paula Hill, Ms. Angelica Cordova-Rajoo, Mrs. Pam Cullotta',
+                email: 'phill@d211.org, acordovarajoo@d211.org, pcullotta@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['interact', 'rotary', 'service', 'volunteering', 'charity', 'community'],
+                commitment: 'low',
+                style: ['service', 'social'],
+                goals: ['giveback', 'friends', 'resume']
+            },
+            {
+                id: 'jazz-band',
+                name: 'Jazz Band',
+                category: 'finearts',
+                categoryLabel: 'Fine Arts & Performance',
+                description: 'Auditioned musical ensemble studying jazz improvisation, swing, Latin, and funk arrangements for concerts and festival competitions.',
+                sponsor: 'Mr. Kreg Moorhouse',
+                email: 'kmoorhouse@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Band Room',
+                tags: ['jazz', 'band', 'music', 'ensemble', 'performance', 'fine arts'],
+                commitment: 'high',
+                style: ['creative', 'competitions'],
+                goals: ['skills', 'friends']
+            },
+            {
+                id: 'junior-class-council',
+                name: 'Junior Class Council',
+                category: 'gov',
+                categoryLabel: 'Student Government',
+                description: 'Represent the 11th-grade class! Plan Prom, class fundraisers, junior spirit events, and community initiatives.',
+                sponsor: 'Ms. Shannon Malone, Ms. Karin Lichtenberger',
+                email: 'snmalone@d211.org, klichtenberger@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['junior', 'prom', 'class council', 'government', 'leadership', '11th grade'],
+                commitment: 'medium',
+                style: ['social', 'hands-on'],
+                goals: ['resume', 'friends', 'skills']
+            },
+            {
+                id: 'latinos-unidos',
+                name: 'Latinos Unidos Club',
+                category: 'culture',
+                categoryLabel: 'Cultural Clubs',
+                description: 'Celebrate Latino heritage and culture, participate in cultural dance, organize community events, and foster academic and leadership excellence.',
+                sponsor: 'Ms. Angelica Ortiz, Ms. Lisa Zara-Brito',
+                email: 'aortiz@d211.org, lzarabrito@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['latinos unidos', 'latino', 'culture', 'heritage', 'diversity', 'community'],
+                commitment: 'low',
+                style: ['social', 'service'],
+                goals: ['friends', 'giveback', 'trynew']
+            },
+            {
+                id: 'math-team',
+                name: 'Math Team',
+                category: 'competitive',
+                categoryLabel: 'Competitive Clubs',
+                description: 'Solve challenging contest math problems in algebra, geometry, pre-calculus, and calculus. Compete in North Suburban Math League meets and ICTM state competitions.',
+                sponsor: 'Mr. Richard Cortez, Mr. Derek Fivelson, Mr. Amar Patel, Ms. Andrea Willis, Ms. Megan McCaliano',
+                email: 'rcortez@d211.org, dfivelson@d211.org, apatel@d211.org, awillis@d211.org, mmccaliano@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['math', 'stem', 'academics', 'competitions', 'ictm', 'problem solving'],
+                commitment: 'medium',
+                style: ['competitions'],
+                goals: ['skills', 'resume']
+            },
+            {
+                id: 'medical-careers-club',
+                name: 'Medical Careers Club',
+                category: 'making',
+                categoryLabel: 'Making and Building',
+                description: 'Explore careers in medicine, nursing, surgery, and research with healthcare professional speakers and hands-on medical simulations.',
+                sponsor: 'Ms. Victoria DeGuia',
+                email: 'vdeguia@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['medical', 'healthcare', 'science', 'biology', 'careers', 'stem'],
+                commitment: 'low',
+                style: ['hands-on', 'service'],
+                goals: ['resume', 'skills', 'trynew']
+            },
+            {
+                id: 'model-un',
+                name: 'Model United Nations',
+                category: 'competitive',
+                categoryLabel: 'Competitive Clubs',
+                description: 'Simulate international diplomacy, represent sovereign nations, write resolutions, and attend multi-day university MUN conferences.',
+                sponsor: 'Mr. James Lundquist',
+                email: 'jlundquist@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['model un', 'diplomacy', 'geopolitics', 'debate', 'public speaking', 'competitions'],
+                commitment: 'medium',
+                style: ['competitions', 'debates'],
+                goals: ['resume', 'skills', 'friends']
+            },
+            {
+                id: 'tri-m-music-honor-society',
+                name: 'Modern Music Masters (Tri-M Honor Society)',
+                category: 'finearts',
+                categoryLabel: 'Fine Arts & Performance',
+                description: 'National honor society recognizing outstanding music students through music performance, service projects, and advocacy for music education.',
+                sponsor: 'Mr. Tim Koll, Ms. Leann Roder-Manson',
+                email: 'tkoll@d211.org, lrodermanson@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Music Wing',
+                tags: ['music', 'tri-m', 'honor society', 'fine arts', 'service', 'performance'],
+                commitment: 'medium',
+                style: ['creative', 'service'],
+                goals: ['resume', 'giveback', 'skills']
+            },
+            {
+                id: 'musical',
+                name: 'Musical',
+                category: 'finearts',
+                categoryLabel: 'Fine Arts & Performance',
+                description: 'Conant High School’s annual spring musical production featuring acting, solo/choral vocal music, choreography, live orchestra, and stage crew.',
+                sponsor: 'Mrs. Katherine Apperson-Skobel',
+                email: 'kappersonskobel@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'CHS Auditorium',
+                tags: ['musical', 'singing', 'dancing', 'acting', 'theatre', 'performance'],
+                commitment: 'high',
+                style: ['creative', 'hands-on'],
+                goals: ['friends', 'skills', 'trynew']
+            },
+            {
+                id: 'msa',
+                name: 'Muslim Student Association (MSA)',
+                category: 'culture',
+                categoryLabel: 'Cultural Clubs',
+                description: 'Provides a welcoming space for Muslim students and allies to connect, engage in community service, foster understanding, and host cultural gatherings.',
+                sponsor: 'Mrs. Ayca Celme',
+                email: 'acelme@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['msa', 'muslim', 'culture', 'faith', 'diversity', 'community', 'service'],
+                commitment: 'low',
+                style: ['social', 'service'],
+                goals: ['friends', 'giveback']
+            },
+            {
+                id: 'nhs',
+                name: 'National Honor Society',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Prestigious national organization recognizing high school students demonstrating scholarship, leadership, service, and character.',
+                sponsor: 'Mrs. Jacqueline Brown, Mr. Jeff Stewart',
+                email: 'jbrown@d211.org, jstewart@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['nhs', 'national honor society', 'academics', 'service', 'leadership', 'tutoring'],
+                commitment: 'medium',
+                style: ['service'],
+                goals: ['resume', 'giveback']
+            },
+            {
+                id: 'operation-snowball',
+                name: 'Operation Snowball',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Youth-led leadership program empowering teens with positive decision-making skills, mental health awareness, and peer support weekend retreats.',
+                sponsor: 'Mr. Itamar Steiner',
+                email: 'isteiner@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['snowball', 'leadership', 'wellness', 'peer support', 'mental health', 'community'],
+                commitment: 'medium',
+                style: ['social', 'service'],
+                goals: ['friends', 'skills', 'giveback']
+            },
+            {
+                id: 'orchesis',
+                name: 'Orchesis Dance Company',
+                category: 'finearts',
+                categoryLabel: 'Fine Arts & Performance',
+                description: 'Creative dance performance group exploring contemporary, jazz, modern, and ballet choreography leading to an annual showcase.',
+                sponsor: 'Ms. Danielle Johnson, Mrs. Pam Cullotta',
+                email: 'dljohnson@d211.org, pcullotta@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Dance Studio',
+                tags: ['orchesis', 'dance', 'choreography', 'fine arts', 'performance'],
+                commitment: 'high',
+                style: ['creative', 'sports_play'],
+                goals: ['skills', 'friends', 'trynew']
+            },
+            {
+                id: 'outdoor-adventure-club',
+                name: 'Outdoor Adventure Club',
+                category: 'sports',
+                categoryLabel: 'Intramural Sports and Fitness',
+                description: 'Enjoy nature through outdoor recreation including hiking, camping skills, kayaking, disc golf, and environmental field trips.',
+                sponsor: 'Mr. Dave Cromer',
+                email: 'dcromer@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['outdoors', 'hiking', 'adventure', 'nature', 'recreation', 'sports'],
+                commitment: 'low',
+                style: ['sports_play', 'social'],
+                goals: ['trynew', 'friends']
+            },
+            {
+                id: 'pals',
+                name: 'PALS (Peer-Assisted Learning & Service)',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Pairs general education students with peers with special needs for fun social activities, sports, crafts, and inclusive campus leadership.',
+                sponsor: 'Ms. Kelly Anderson, Ms. Josie Garcia',
+                email: 'kanderson@d211.org, jgarcia@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['pals', 'inclusion', 'peer support', 'special needs', 'service', 'friendship'],
+                commitment: 'low',
+                style: ['social', 'service'],
+                goals: ['friends', 'giveback']
+            },
+            {
+                id: 'peer-mediation',
+                name: 'Peer Mediation',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Trained student mediators who assist peers in resolving interpersonal conflicts peacefully through restorative dialogue.',
+                sponsor: 'Mr. Neal Hannant, Ms. Margaret Roesslein',
+                email: 'nhannant@d211.org, mroesslein@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['mediation', 'restorative justice', 'leadership', 'conflict resolution', 'service'],
+                commitment: 'low',
+                style: ['service', 'social'],
+                goals: ['skills', 'resume', 'giveback']
+            },
+            {
+                id: 'pep-club',
+                name: 'Pep Club (Cougar Crazies)',
+                category: 'sports',
+                categoryLabel: 'Intramural Sports and Fitness',
+                description: 'Bring Cougar Pride to life! Coordinate student cheering sections, spirit dress-up themes, pep rallies, and athletic event support.',
+                sponsor: 'Ms. Amanda Schweinebraten, Ms. Christina Schweinebraten-Melone',
+                email: 'aschweinebraten@d211.org, cschweinebraten@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['pep club', 'cougar crazies', 'spirit', 'athletics', 'school pride', 'cheering'],
+                commitment: 'low',
+                style: ['social', 'sports_play'],
+                goals: ['friends', 'trynew']
+            },
+            {
+                id: 'photography-club',
+                name: 'Photography Club',
+                category: 'finearts',
+                categoryLabel: 'Fine Arts & Performance',
+                description: 'Learn DSLR camera settings, composition, digital photo editing (Photoshop/Lightroom), and capture school life through photo walks.',
+                sponsor: 'Mr. Brian Schroeck',
+                email: 'bschroeck@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['photography', 'camera', 'photos', 'fine arts', 'digital art', 'creativity'],
+                commitment: 'low',
+                style: ['creative', 'hands-on'],
+                goals: ['skills', 'trynew', 'friends']
+            },
+            {
+                id: 'ping-pong',
+                name: 'Ping Pong Club',
+                category: 'sports',
+                categoryLabel: 'Intramural Sports and Fitness',
+                description: 'Recreational and competitive table tennis. Play casual singles/doubles matches or practice tournament strategy with peers.',
+                sponsor: 'Mr. Jordan Catapano, Mr. Caleb Cochrum',
+                email: 'jcatapano@d211.org, ccochrum@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Conant Main Gym / Atrium',
+                tags: ['ping pong', 'table tennis', 'sports', 'intramurals', 'fitness', 'recreation'],
+                commitment: 'low',
+                style: ['sports_play', 'hands-on', 'competitions', 'social'],
+                goals: ['friends', 'trynew', 'skills']
+            },
+            {
+                id: 'powerlifting',
+                name: 'Powerlifting',
+                category: 'sports',
+                categoryLabel: 'Intramural Sports and Fitness',
+                description: 'Develop strength through squat, bench press, and deadlift training guided by certified strength and conditioning sponsors.',
+                sponsor: 'Mr. Dave Cromer, Mr. Aaron Essex, Ms. Victoria Zervos',
+                email: 'dcromer@d211.org, aessex@d211.org, vzervos@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'CHS Weight Room',
+                tags: ['powerlifting', 'lifting', 'fitness', 'strength', 'sports', 'gym'],
+                commitment: 'medium',
+                style: ['sports_play', 'hands-on'],
+                goals: ['skills', 'trynew']
+            },
+            {
+                id: 'rise-club',
+                name: 'RISE (Reaching Individuals by Supporting Every Girl)',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Empowerment and mentorship network supporting young women through guest speaker panels, workshops, wellness, and peer support.',
+                sponsor: 'Ms. Heather Doan',
+                email: 'hdoan@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['rise', 'women empowerment', 'mentorship', 'leadership', 'wellness', 'community'],
+                commitment: 'low',
+                style: ['social', 'service'],
+                goals: ['friends', 'resume', 'giveback']
+            },
+            {
+                id: 'robotics',
+                name: 'Robotics Club',
+                category: 'making',
+                categoryLabel: 'Making and Building',
+                description: 'Design, build, wire, and code custom competitive robots to compete in VEX engineering challenge tournaments.',
+                sponsor: 'Mr. Chris Bruce, Mr. Eric LeBlanc',
+                email: 'cbruce@d211.org, eleblanc@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Applied Tech Shop / Room 140',
+                tags: ['robotics', 'vex', 'engineering', 'stem', 'hands-on', 'building', 'coding'],
+                commitment: 'high',
+                style: ['hands-on', 'competitions'],
+                goals: ['skills', 'resume', 'friends']
+            },
+            {
+                id: 'sadd',
+                name: 'SADD (Students Against Destructive Decisions)',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Promote positive peer choices, substance abuse prevention, safe driving campaigns, and health awareness across the student body.',
+                sponsor: 'Mr. Jason Sherko',
+                email: 'jsherko@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['sadd', 'prevention', 'health', 'awareness', 'service', 'leadership'],
+                commitment: 'low',
+                style: ['service', 'social'],
+                goals: ['giveback', 'resume']
+            },
+            {
+                id: 'saga',
+                name: 'SAGA (Sexuality and Gender Alliance)',
+                category: 'culture',
+                categoryLabel: 'Cultural Clubs',
+                description: 'Safe and supportive environment for LGBTQ+ students and allies to build community, discuss advocate initiatives, and promote inclusion.',
+                sponsor: 'Al Eschenbrenner',
+                email: 'aeschenbrenner@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['saga', 'lgbtq', 'allies', 'inclusion', 'diversity', 'community'],
+                commitment: 'low',
+                style: ['social'],
+                goals: ['friends', 'trynew']
+            },
+            {
+                id: 'sasa',
+                name: 'SASA (South Asian Student Association)',
+                category: 'culture',
+                categoryLabel: 'Cultural Clubs',
+                description: 'Celebrate South Asian cultural traditions, holiday festivals (Diwali, Holi), music, dance performance, and authentic cuisine.',
+                sponsor: 'Mrs. Lichien Chan',
+                email: 'lchan@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['sasa', 'south asian', 'culture', 'diversity', 'diwali', 'food', 'dance'],
+                commitment: 'low',
+                style: ['social', 'creative'],
+                goals: ['friends', 'trynew']
+            },
+            {
+                id: 'scholastic-bowl',
+                name: 'Scholastic Bowl (Academic Bowl)',
+                category: 'competitive',
+                categoryLabel: 'Competitive Clubs',
+                description: 'Fast-paced buzzer quiz competition testing knowledge in science, literature, history, math, fine arts, and pop culture.',
+                sponsor: 'Mrs. Lauren Pieper, Ms. Amber Wozniak',
+                email: 'lpieper@d211.org, awozniak@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['scholastic bowl', 'quiz bowl', 'trivia', 'academics', 'competitions'],
+                commitment: 'medium',
+                style: ['competitions'],
+                goals: ['skills', 'resume', 'friends']
+            },
+            {
+                id: 'school-of-rock',
+                name: 'School of Rock',
+                category: 'finearts',
+                categoryLabel: 'Fine Arts & Performance',
+                description: 'Form rock bands with student vocalists, guitarists, bassists, keyboardists, and drummers to rehearse and perform rock concerts.',
+                sponsor: 'Mr. Mike Benshish',
+                email: 'mbenshish@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Music Room',
+                tags: ['rock', 'school of rock', 'band', 'music', 'guitar', 'drums', 'performance'],
+                commitment: 'medium',
+                style: ['creative', 'social'],
+                goals: ['friends', 'skills', 'trynew']
+            },
+            {
+                id: 'science-olympiad',
+                name: 'Science Olympiad',
+                category: 'competitive',
+                categoryLabel: 'Competitive Clubs',
+                description: 'Compete in 23 engineering design, laboratory testing, and scientific knowledge events in regional and state Science Olympiad tournaments.',
+                sponsor: 'Mr. Jon Babcock, Ms. Judy Joung, Ms. Hannah Kutchek',
+                email: 'jbabcock@d211.org, jjoung@d211.org, hkutchek@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['science olympiad', 'stem', 'science', 'engineering', 'competitions', 'physics', 'chemistry'],
+                commitment: 'high',
+                style: ['competitions', 'hands-on'],
+                goals: ['resume', 'skills', 'friends']
+            },
+            {
+                id: 'senior-class-council',
+                name: 'Senior Class Council',
+                category: 'gov',
+                categoryLabel: 'Student Government',
+                description: 'Lead the 12th-grade class! Organize Senior Gift, Senior Picnic, Graduation traditions, and senior spirit events.',
+                sponsor: 'Mr. Eric Jacobsen, Mrs. Amy Differding, Mr. Steve Kurfess, Mr. James Lundquist',
+                email: 'ejacobsen@d211.org, adifferding@d211.org, skurfess@d211.org, jlundquist@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['senior', 'graduation', 'class council', 'government', 'leadership', '12th grade'],
+                commitment: 'medium',
+                style: ['social', 'hands-on'],
+                goals: ['resume', 'friends', 'skills']
+            },
+            {
+                id: 'service-club',
+                name: 'Service Club',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Organize school-wide charity fundraisers, clothing drives, food bank volunteering, and neighborhood service initiatives.',
+                sponsor: 'Mrs. Lori Stella, Ms. Paula Hill',
+                email: 'lstella@d211.org, phill@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['service', 'volunteering', 'charity', 'community', 'help'],
+                commitment: 'low',
+                style: ['service', 'social'],
+                goals: ['giveback', 'friends', 'resume']
+            },
+            {
+                id: 'sophomore-class-council',
+                name: 'Sophomore Class Council',
+                category: 'gov',
+                categoryLabel: 'Student Government',
+                description: 'Represent the 10th-grade class! Coordinate sophomore class fundraisers, spirit activities, and community service projects.',
+                sponsor: 'Mrs. Angela Drenth',
+                email: 'adrenth@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['sophomore', 'class council', 'government', 'leadership', '10th grade'],
+                commitment: 'medium',
+                style: ['social', 'hands-on'],
+                goals: ['resume', 'friends', 'skills']
+            },
+            {
+                id: 'speech-team',
+                name: 'Speech Team (Forensics)',
+                category: 'competitive',
+                categoryLabel: 'Competitive Clubs',
+                description: 'Master public speaking, dramatic interpretation, comedy, radio broadcasting, or informative speaking at IHSA speech tournaments.',
+                sponsor: 'Ms. Vera Bass, Mrs. Lori Stella, Mr. Sean Haracz',
+                email: 'vbass@d211.org, lstella@d211.org, sharacz@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['speech', 'forensics', 'public speaking', 'acting', 'ihsa', 'competitions'],
+                commitment: 'high',
+                style: ['competitions', 'creative'],
+                goals: ['resume', 'skills']
+            },
+            {
+                id: 'student-council',
+                name: 'Student Council',
+                category: 'gov',
+                categoryLabel: 'Student Government',
+                description: 'Serve as the official student body government. Plan Homecoming week, pep assemblies, blood drives, and advocate for student body needs.',
+                sponsor: 'Mr. David Moravek, Mrs. Monica Aubin, Mrs. Patricia Ertl',
+                email: 'dmoravek@d211.org, maubin@d211.org, pertl@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Student Council Room',
+                tags: ['student council', 'government', 'leadership', 'homecoming', 'events'],
+                commitment: 'high',
+                style: ['social', 'hands-on'],
+                goals: ['resume', 'friends', 'skills']
+            },
+            {
+                id: 'student-equity-committee',
+                name: 'Student Equity Committee',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Collaborate with administrators and student leaders to foster equity, representation, and belonging across Conant High School.',
+                sponsor: 'Ms. Samantha Serrano',
+                email: 'sserrano@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['equity', 'inclusion', 'leadership', 'advocacy', 'student voice'],
+                commitment: 'medium',
+                style: ['social', 'service'],
+                goals: ['giveback', 'resume', 'skills']
+            },
+            {
+                id: 'bring-change-to-mind',
+                name: 'Student Wellness Committee: Bring Change to Mind',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'De-stigmatize mental health, promote mental wellness resources, and host stress-relief wellness events for CHS students.',
+                sponsor: 'Ms. Ashley Langley-Krajack, Ms. Devin Godzicki',
+                email: 'langleykrajack@d211.org, dgodzicki@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['wellness', 'mental health', 'bring change to mind', 'advocacy', 'service'],
+                commitment: 'low',
+                style: ['social', 'service'],
+                goals: ['giveback', 'friends']
+            },
+            {
+                id: 'students-supporting-wings',
+                name: 'Students Supporting WINGS',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Raise community awareness and funds supporting WINGS Program Inc., providing shelter and services to domestic violence survivors.',
+                sponsor: 'Mr. Josh Harbeck',
+                email: 'jharbeck@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['wings', 'domestic violence awareness', 'charity', 'service', 'volunteering'],
+                commitment: 'low',
+                style: ['service', 'social'],
+                goals: ['giveback', 'friends', 'resume']
+            },
+            {
+                id: 'tapestry-magazine',
+                name: 'Tapestry (Fine Arts Magazine)',
+                category: 'finearts',
+                categoryLabel: 'Fine Arts & Performance',
+                description: 'Curate, edit, design, and publish Conant High School’s award-winning literary and visual fine arts magazine.',
+                sponsor: 'Mr. David Gwizdala',
+                email: 'dgwizdala@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['tapestry', 'fine arts', 'magazine', 'poetry', 'prose', 'art', 'publishing'],
+                commitment: 'medium',
+                style: ['creative', 'hands-on'],
+                goals: ['resume', 'skills']
+            },
+            {
+                id: 'technology-club',
+                name: 'Technology Club (Hack Club)',
+                category: 'making',
+                categoryLabel: 'Making and Building',
+                description: 'Build web apps, hardware hacks, and coding projects in an open maker space environment affiliated with Hack Club.',
+                sponsor: 'Mr. Paul Kim',
+                email: 'pkim@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['tech', 'hack club', 'coding', 'maker', 'hardware', 'stem'],
+                commitment: 'medium',
+                style: ['hands-on', 'competitions'],
+                goals: ['skills', 'resume', 'trynew']
+            },
+            {
+                id: 'ultimate-frisbee',
+                name: 'Ultimate Frisbee Club',
+                category: 'sports',
+                categoryLabel: 'Intramural Sports and Fitness',
+                description: 'Fast-paced team sport emphasizing athleticism, teamwork, and fair play with outdoor scrimmage games.',
+                sponsor: 'Mr. Jeff Robinson',
+                email: 'jrobinson@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'CHS Outdoor Turf Field',
+                tags: ['ultimate frisbee', 'sports', 'intramurals', 'outdoors', 'fitness'],
+                commitment: 'medium',
+                style: ['sports_play', 'hands-on', 'social'],
+                goals: ['friends', 'skills', 'trynew']
+            },
+            {
+                id: 'unicef-club',
+                name: 'UNICEF Club',
+                category: 'impact',
+                categoryLabel: 'Impact Clubs',
+                description: 'Partner with UNICEF to advocate for global children’s rights, healthcare, nutrition, emergency relief, and education.',
+                sponsor: 'Dr. Susan Hess',
+                email: 'shess@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['unicef', 'global health', 'humanitarian', 'service', 'advocacy', 'children'],
+                commitment: 'low',
+                style: ['service', 'social'],
+                goals: ['giveback', 'resume', 'friends']
+            },
+            {
+                id: 'woodworkers-club',
+                name: 'Woodworkers Club',
+                category: 'making',
+                categoryLabel: 'Making and Building',
+                description: 'Learn woodworking power tools, joinery techniques, timber sanding, and craft custom furniture or wooden projects.',
+                sponsor: 'Mr. Jon Babcock',
+                email: 'jbabcock@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'Applied Tech Woodshop',
+                tags: ['woodworking', 'carpentry', 'woodshop', 'hands-on', 'crafting', 'making'],
+                commitment: 'medium',
+                style: ['hands-on'],
+                goals: ['skills', 'trynew']
+            },
+            {
+                id: 'writers-club',
+                name: 'Writers\' Club',
+                category: 'creative',
+                categoryLabel: 'Creative and Special Interest',
+                description: 'Friendly workshop environment to share creative writing, poetry, fiction, scriptwriting, and receive peer feedback.',
+                sponsor: 'Mr. Michael Long',
+                email: 'mhlong@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['writing', 'creative writing', 'poetry', 'fiction', 'workshop'],
+                commitment: 'low',
+                style: ['creative', 'social'],
+                goals: ['friends', 'skills', 'trynew']
+            },
+            {
+                id: 'wyse',
+                name: 'WYSE (Worldwide Youth in Science & Engineering)',
+                category: 'competitive',
+                categoryLabel: 'Competitive Clubs',
+                description: 'Academic competition testing advanced high school knowledge in biology, chemistry, computer science, engineering graphics, math, and physics.',
+                sponsor: 'Mrs. Lauren Pieper',
+                email: 'lpieper@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['wyse', 'stem', 'engineering', 'science', 'math', 'competitions', 'academics'],
+                commitment: 'medium',
+                style: ['competitions'],
+                goals: ['resume', 'skills']
+            },
+            {
+                id: 'yearbook-conavite',
+                name: 'Yearbook (Conavite)',
+                category: 'creative',
+                categoryLabel: 'Creative and Special Interest',
+                description: 'Design and publish Conant High School’s official yearbook (*Conavite*). Cover student events, photojournalism, page layout, and graphic design.',
+                sponsor: 'Ms. Camille Lutz',
+                email: 'clutz@d211.org',
+                meeting: 'To Be Confirmed',
+                location: 'To Be Confirmed',
+                tags: ['yearbook', 'conavite', 'design', 'photography', 'journalism', 'layout'],
+                commitment: 'high',
+                style: ['creative', 'hands-on'],
+                goals: ['resume', 'skills', 'friends']
+            }
+        ];
+
+        // ================= QUIZ QUESTIONS DATA =================
+        const QUIZ_QUESTIONS = [
+            {
+                id: 'interest',
+                question: 'What area of activities excites you the most?',
+                subtitle: 'Select one or more categories that interest you.',
+                options: [
+                    { label: 'Intramural Sports and Fitness', icon: 'fa-dumbbell', tag: 'sports' },
+                    { label: 'Impact Clubs & Service', icon: 'fa-hand-holding-heart', tag: 'impact' },
+                    { label: 'Creative and Special Interest', icon: 'fa-gamepad', tag: 'creative' },
+                    { label: 'Making and Building (STEM/Tech)', icon: 'fa-hammer', tag: 'making' },
+                    { label: 'Competitive Clubs & Teams', icon: 'fa-trophy', tag: 'competitive' },
+                    { label: 'Cultural Clubs & Diversity', icon: 'fa-globe', tag: 'culture' },
+                    { label: 'Fine Arts & Performance', icon: 'fa-palette', tag: 'finearts' },
+                    { label: 'Student Government & Leadership', icon: 'fa-landmark', tag: 'gov' }
+                ]
+            },
+            {
+                id: 'style',
+                question: 'How do you like to participate in group activities?',
+                subtitle: 'Select all participation styles you enjoy (choose one or more).',
+                options: [
+                    { label: 'Active physical play, sports & games', icon: 'fa-volleyball', val: 'sports_play' },
+                    { label: 'Hands-on making, building & constructing projects', icon: 'fa-screwdriver-wrench', val: 'hands-on' },
+                    { label: 'Competitive tournaments & debates', icon: 'fa-trophy', val: 'competitions' },
+                    { label: 'Casual social hangouts & making friends', icon: 'fa-mug-hot', val: 'social' },
+                    { label: 'Organizing charity events & giving back', icon: 'fa-heart', val: 'service' },
+                    { label: 'Creative expression & stage performances', icon: 'fa-masks-theater', val: 'creative' }
+                ]
+            },
+            {
+                id: 'commitment',
+                question: 'How much time can you commit each week?',
+                subtitle: 'Select all time commitments that fit your schedule.',
+                options: [
+                    { label: 'High Commitment (2-3 days a week, tournament travel)', icon: 'fa-bolt', val: 'high' },
+                    { label: 'Medium Commitment (1 day a week after school)', icon: 'fa-clock', val: 'medium' },
+                    { label: 'Flexible / Low Commitment (Monthly meetings or events)', icon: 'fa-feather', val: 'low' }
+                ]
+            },
+            {
+                id: 'goals',
+                question: 'What is your primary goal for joining a club at Conant?',
+                subtitle: 'Select all goals you hope to achieve.',
+                options: [
+                    { label: 'Build skills & boost college resume', icon: 'fa-graduation-cap', val: 'resume' },
+                    { label: 'Meet new people and build friendships', icon: 'fa-users', val: 'friends' },
+                    { label: 'Give back to the local community', icon: 'fa-hands-holding-circle', val: 'giveback' },
+                    { label: 'Try something completely brand new', icon: 'fa-compass', val: 'trynew' }
+                ]
+            },
+            {
+                id: 'meeting_time',
+                question: 'When do you prefer club meetings to take place?',
+                subtitle: 'Select all meeting times that work for you.',
+                options: [
+                    { label: 'Immediately after school (3:30 PM - 4:30 PM)', icon: 'fa-sun', val: 'after' },
+                    { label: 'Flexible or weekend events', icon: 'fa-calendar-week', val: 'flex' }
+                ]
+            },
+            {
+                id: 'team_v_solo',
+                question: 'Do you prefer small team collaboration or big group gatherings?',
+                subtitle: 'Select your preferred group dynamics.',
+                options: [
+                    { label: 'Small focused teams & project squads', icon: 'fa-user-group', val: 'small' },
+                    { label: 'Large group gatherings & school-wide events', icon: 'fa-people-group', val: 'large' }
+                ]
+            }
+        ];
+
+        // State variables
+        let currentQuizIndex = 0;
+        let quizAnswers = {};
+        let selectedCategory = 'all';
+        let savedClubs = JSON.parse(localStorage.getItem('chs_saved_clubs') || '[]');
+
+        // Initialize App on DOM Ready
+        window.addEventListener('DOMContentLoaded', () => {
+            renderStartCategories();
+            updateSavedBadge();
+        });
+
+        // Navigation Handler
+        function navigateTo(screenId) {
+            ['screen-start', 'screen-quiz', 'screen-results', 'screen-explore'].forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.classList.add('hidden');
+            });
+
+            const target = document.getElementById('screen-' + screenId);
+            if (target) target.classList.remove('hidden');
+
+            // Highlight Nav Buttons
+            ['start', 'quiz', 'explore'].forEach(nav => {
+                const btn = document.getElementById('nav-' + nav);
+                if (btn) {
+                    if (nav === screenId) {
+                        btn.classList.add('bg-white/15', 'text-white', 'border-white/20');
+                    } else {
+                        btn.classList.remove('bg-white/15', 'text-white', 'border-white/20');
+                    }
+                }
+            });
+
+            if (screenId === 'explore') {
+                renderExploreGrid();
+            }
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function renderStartCategories() {
+            const categories = [
+                { id: 'sports', label: 'Intramural Sports and Fitness', icon: 'fa-dumbbell', color: 'text-rose-600 bg-rose-50/80 border-rose-200' },
+                { id: 'impact', label: 'Impact Clubs', icon: 'fa-hand-holding-heart', color: 'text-scarlet-600 bg-scarlet-50/80 border-scarlet-200' },
+                { id: 'creative', label: 'Creative and Special Interest', icon: 'fa-gamepad', color: 'text-amber-600 bg-amber-50/80 border-amber-200' },
+                { id: 'making', label: 'Making and Building', icon: 'fa-hammer', color: 'text-blue-600 bg-blue-50/80 border-blue-200' },
+                { id: 'competitive', label: 'Competitive Clubs', icon: 'fa-trophy', color: 'text-emerald-600 bg-emerald-50/80 border-emerald-200' },
+                { id: 'culture', label: 'Cultural Clubs', icon: 'fa-globe', color: 'text-indigo-600 bg-indigo-50/80 border-indigo-200' },
+                { id: 'finearts', label: 'Fine Arts & Performance', icon: 'fa-palette', color: 'text-purple-600 bg-purple-50/80 border-purple-200' },
+                { id: 'gov', label: 'Student Government', icon: 'fa-landmark', color: 'text-navy-600 bg-navy-50/80 border-navy-200' }
+            ];
+
+            const container = document.getElementById('quick-category-grid');
+            if (!container) return;
+
+            container.innerHTML = categories.map(cat => `
+                <button onclick="selectCategoryAndExplore('${cat.id}')" class="p-3.5 rounded-2xl border border-white/80 hover:border-scarlet-400/50 transition-all text-center flex flex-col items-center justify-center group glass-panel hover:shadow-lg hover:-translate-y-1">
+                    <div class="w-10 h-10 rounded-xl ${cat.color} border flex items-center justify-center mb-2 text-base group-hover:scale-110 transition-transform shadow-sm">
+                        <i class="fa-solid ${cat.icon}"></i>
+                    </div>
+                    <span class="text-[11px] font-bold text-slate-700 group-hover:text-navy-900 leading-tight">${cat.label}</span>
+                </button>
+            `).join('');
+        }
+
+        function selectCategoryAndExplore(catId) {
+            selectedCategory = catId;
+            navigateTo('explore');
+        }
+
+        // Start Quiz
+        function startQuiz() {
+            currentQuizIndex = 0;
+            quizAnswers = {};
+            navigateTo('quiz');
+            renderQuizQuestion();
+        }
+
+        function renderQuizQuestion() {
+            const q = QUIZ_QUESTIONS[currentQuizIndex];
+            const container = document.getElementById('quiz-question-container');
+            const progress = document.getElementById('quiz-progress-bar');
+            const indicator = document.getElementById('quiz-step-indicator');
+            const nextBtn = document.getElementById('quiz-next-btn');
+            const prevBtn = document.getElementById('quiz-prev-btn');
+
+            if (!q || !container) return;
+
+            // Selected values for current question (stored as Array)
+            const selectedVals = quizAnswers[q.id] || [];
+
+            // Update Progress Header
+            const pct = Math.round(((currentQuizIndex + 1) / QUIZ_QUESTIONS.length) * 100);
+            if (progress) progress.style.width = pct + '%';
+            if (indicator) indicator.textContent = `Question ${currentQuizIndex + 1} of ${QUIZ_QUESTIONS.length}`;
+
+            if (prevBtn) prevBtn.disabled = currentQuizIndex === 0;
+            if (nextBtn) {
+                nextBtn.disabled = selectedVals.length === 0;
+                nextBtn.innerHTML = currentQuizIndex === QUIZ_QUESTIONS.length - 1 
+                    ? 'See My Club Matches <i class="fa-solid fa-wand-magic-sparkles ml-2 text-yellow-300"></i>' 
+                    : 'Next <i class="fa-solid fa-chevron-right ml-2"></i>';
+            }
+
+            container.innerHTML = `
+                <div class="space-y-6 animate-fade-in">
+                    <div>
+                        <div class="flex items-center justify-between">
+                            <h3 class="font-heading text-2xl font-bold text-navy-900">${q.question}</h3>
+                            <span class="text-[11px] font-extrabold text-scarlet-600 bg-scarlet-50 px-2.5 py-1 rounded-lg border border-scarlet-200">Select Multiple</span>
+                        </div>
+                        <p class="text-xs text-slate-500 mt-1">${q.subtitle}</p>
+                    </div>
+
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+                        ${q.options.map((opt) => {
+                            const val = opt.tag || opt.val || opt.label;
+                            const isSelected = selectedVals.includes(val);
+                            return `
+                                <button onclick="selectQuizOption('${q.id}', '${val}')" class="p-4 rounded-2xl border text-left flex items-center justify-between space-x-3.5 transition-all duration-200 group ${isSelected ? 'border-scarlet-600 bg-scarlet-50/90 shadow-md ring-2 ring-scarlet-500/20' : 'border-slate-200/80 hover:border-slate-300 bg-white/80 hover:bg-white'}">
+                                    <div class="flex items-center space-x-3.5">
+                                        <div class="w-10 h-10 rounded-xl ${isSelected ? 'gradient-scarlet text-white' : 'bg-slate-100 text-slate-600 group-hover:bg-navy-50 group-hover:text-navy-800'} flex items-center justify-center text-lg shrink-0 transition-colors">
+                                            <i class="fa-solid ${opt.icon}"></i>
+                                        </div>
+                                        <span class="text-xs sm:text-sm font-semibold ${isSelected ? 'text-scarlet-950 font-bold' : 'text-slate-700'} leading-snug">${opt.label}</span>
+                                    </div>
+                                    <div class="shrink-0 ml-2">
+                                        <i class="fa-solid ${isSelected ? 'fa-square-check text-scarlet-600 text-xl' : 'fa-square text-slate-300 text-xl group-hover:text-slate-400'} transition-colors"></i>
+                                    </div>
+                                </button>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function selectQuizOption(questionId, value) {
+            if (!quizAnswers[questionId]) {
+                quizAnswers[questionId] = [];
+            }
+
+            const index = quizAnswers[questionId].indexOf(value);
+            if (index > -1) {
+                quizAnswers[questionId].splice(index, 1);
+            } else {
+                quizAnswers[questionId].push(value);
+            }
+
+            renderQuizQuestion();
+        }
+
+        function prevQuestion() {
+            if (currentQuizIndex > 0) {
+                currentQuizIndex--;
+                renderQuizQuestion();
+            }
+        }
+
+        function nextQuestion() {
+            if (currentQuizIndex < QUIZ_QUESTIONS.length - 1) {
+                currentQuizIndex++;
+                renderQuizQuestion();
+            } else {
+                calculateQuizMatches();
+            }
+        }
+
+        function calculateQuizMatches() {
+            const scores = ACTIVITIES.map(act => {
+                let matchScore = 0;
+                let maxPossible = 10;
+
+                // Category match (multi-select)
+                const selectedInterests = quizAnswers.interest || [];
+                if (selectedInterests.includes(act.category)) {
+                    matchScore += 4;
+                }
+
+                // Style match (multi-select)
+                const selectedStyles = quizAnswers.style || [];
+                if (selectedStyles.some(styleVal => act.style.includes(styleVal))) {
+                    matchScore += 3;
+                }
+
+                // Commitment match (multi-select)
+                const selectedCommitments = quizAnswers.commitment || [];
+                if (selectedCommitments.includes(act.commitment)) {
+                    matchScore += 2;
+                }
+
+                // Goal match (multi-select)
+                const selectedGoals = quizAnswers.goals || [];
+                if (selectedGoals.some(goalVal => act.goals.includes(goalVal))) {
+                    matchScore += 2;
+                }
+
+                // Map to percentage range 65% to 98%
+                const pct = Math.min(98, Math.max(65, Math.round((matchScore / maxPossible) * 35) + 63));
+
+                return { activity: act, score: matchScore, matchPercentage: pct };
+            });
+
+            // Sort descending by match score
+            scores.sort((a, b) => b.matchPercentage - a.matchPercentage);
+            const topMatches = scores.slice(0, 4);
+
+            renderQuizResults(topMatches);
+            navigateTo('results');
+        }
+
+        function renderQuizResults(matches) {
+            const grid = document.getElementById('results-cards-grid');
+            if (!grid) return;
+
+            grid.innerHTML = matches.map((item, idx) => {
+                const act = item.activity;
+                const isSaved = savedClubs.includes(act.id);
+                const matchBadgeGradient = idx === 0 ? 'gradient-scarlet' : 'gradient-navy';
+
+                return `
+                    <div class="glass-panel rounded-3xl p-6 shadow-md border border-white/80 flex flex-col justify-between hover:shadow-2xl hover:-translate-y-1 transition-all duration-300 relative overflow-hidden">
+                        <div>
+                            <!-- Header & Match Tag -->
+                            <div class="flex items-center justify-between mb-3">
+                                <span class="${matchBadgeGradient} text-white text-xs font-extrabold px-3 py-1 rounded-full uppercase tracking-wider flex items-center space-x-1 shadow-md">
+                                    <i class="fa-solid fa-fire text-yellow-300"></i>
+                                    <span>${item.matchPercentage}% Match</span>
+                                </span>
+                                <button onclick="toggleSaveClub('${act.id}')" class="text-slate-400 hover:text-yellow-500 transition text-lg p-1">
+                                    <i class="${isSaved ? 'fa-solid text-yellow-400' : 'fa-regular'} fa-bookmark"></i>
+                                </button>
+                            </div>
+
+                            <span class="text-[11px] font-extrabold text-scarlet-600 uppercase tracking-wider">${act.categoryLabel}</span>
+                            <h3 class="font-heading text-xl font-bold text-navy-900 mt-1 mb-2">${act.name}</h3>
+                            <p class="text-xs text-slate-600 line-clamp-3 mb-4 leading-relaxed">${act.description}</p>
+
+                            <!-- Quick Details -->
+                            <div class="space-y-2 bg-slate-50/80 p-3.5 rounded-2xl text-xs border border-slate-200/60 backdrop-blur-sm">
+                                <div class="flex items-center text-slate-700">
+                                    <i class="fa-solid fa-user-tie text-navy-800 w-5"></i>
+                                    <span class="font-medium truncate">${act.sponsor}</span>
+                                </div>
+                                <div class="flex items-center text-slate-700">
+                                    <i class="fa-solid fa-clock text-scarlet-600 w-5"></i>
+                                    <span>${act.meeting}</span>
+                                </div>
+                                <div class="flex items-center text-slate-700">
+                                    <i class="fa-solid fa-location-dot text-navy-800 w-5"></i>
+                                    <span>${act.location}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Card Footer Action -->
+                        <div class="mt-6 pt-4 border-t border-slate-200/60 flex items-center space-x-2">
+                            <button onclick="openActivityDetails('${act.id}')" class="w-full py-2.5 rounded-xl gradient-navy hover:brightness-110 text-white font-semibold text-xs transition text-center shadow-md">
+                                View Full Details & Contact
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Explore Screen Directory
+        function renderCategoryPills() {
+            const categories = [
+                { id: 'all', label: 'All Activities' },
+                { id: 'sports', label: 'Intramural Sports and Fitness' },
+                { id: 'impact', label: 'Impact Clubs' },
+                { id: 'creative', label: 'Creative & Special Interest' },
+                { id: 'making', label: 'Making & Building' },
+                { id: 'competitive', label: 'Competitive Clubs' },
+                { id: 'culture', label: 'Cultural Clubs' },
+                { id: 'finearts', label: 'Fine Arts & Performance' },
+                { id: 'gov', label: 'Student Government' }
+            ];
+
+            const container = document.getElementById('category-pills-container');
+            if (!container) return;
+
+            container.innerHTML = categories.map(cat => {
+                const isActive = selectedCategory === cat.id;
+                return `
+                    <button onclick="setCategoryFilter('${cat.id}')" class="px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-all ${isActive ? 'gradient-scarlet text-white shadow-md' : 'bg-slate-100 hover:bg-slate-200 text-slate-600'}">
+                        ${cat.label}
+                    </button>
+                `;
+            }).join('');
+        }
+
+        function setCategoryFilter(catId) {
+            selectedCategory = catId;
+            renderExploreGrid();
+        }
+
+        function renderExploreGrid() {
+            renderCategoryPills();
+
+            const query = (document.getElementById('club-search-input')?.value || '').toLowerCase().trim();
+            const grid = document.getElementById('explore-clubs-grid');
+            const countLabel = document.getElementById('explore-results-count');
+
+            let filtered = ACTIVITIES.filter(act => {
+                const matchesCat = (selectedCategory === 'all' || act.category === selectedCategory);
+                const matchesQuery = !query || 
+                    act.name.toLowerCase().includes(query) || 
+                    act.description.toLowerCase().includes(query) || 
+                    act.sponsor.toLowerCase().includes(query) ||
+                    act.tags.some(t => t.includes(query));
+
+                return matchesCat && matchesQuery;
+            });
+
+            if (countLabel) {
+                countLabel.textContent = `Showing ${filtered.length} of ${ACTIVITIES.length} activities`;
+            }
+
+            if (!grid) return;
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full glass-panel rounded-3xl p-12 text-center text-slate-400 border border-white/80 shadow-md">
+                        <i class="fa-solid fa-magnifying-glass text-4xl mb-3 text-slate-300"></i>
+                        <h3 class="font-heading text-lg font-bold text-slate-600">No matching activities found</h3>
+                        <p class="text-xs text-slate-400 mt-1">Try tweaking your search term or selecting a different category pill.</p>
+                        <button onclick="setCategoryFilter('all'); document.getElementById('club-search-input').value='';" class="mt-4 px-4 py-2 rounded-xl gradient-navy text-white text-xs font-bold shadow-md">
+                            Reset Filters
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+
+            grid.innerHTML = filtered.map(act => {
+                const isSaved = savedClubs.includes(act.id);
+                return `
+                    <div class="glass-panel rounded-3xl p-6 shadow-sm border border-white/80 flex flex-col justify-between hover:border-scarlet-400/50 hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                        <div>
+                            <div class="flex items-center justify-between mb-2">
+                                <span class="bg-navy-50 text-navy-800 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider border border-navy-100">
+                                    ${act.categoryLabel}
+                                </span>
+                                <button onclick="toggleSaveClub('${act.id}')" class="text-slate-400 hover:text-yellow-500 transition p-1">
+                                    <i class="${isSaved ? 'fa-solid text-yellow-400' : 'fa-regular'} fa-bookmark"></i>
+                                </button>
+                            </div>
+
+                            <h3 class="font-heading text-lg font-bold text-navy-900 mb-2 hover:text-scarlet-600 cursor-pointer transition-colors" onclick="openActivityDetails('${act.id}')">${act.name}</h3>
+                            <p class="text-xs text-slate-600 line-clamp-3 mb-4 leading-relaxed">${act.description}</p>
+                        </div>
+
+                        <div>
+                            <div class="text-[11px] text-slate-500 space-y-1 mb-4 pt-3 border-t border-slate-200/60">
+                                <div><strong class="text-slate-700">Sponsor:</strong> ${act.sponsor}</div>
+                                <div><strong class="text-slate-700">Meets:</strong> ${act.meeting}</div>
+                            </div>
+
+                            <button onclick="openActivityDetails('${act.id}')" class="w-full py-2.5 rounded-xl bg-slate-100/90 hover:gradient-navy hover:text-white text-navy-900 font-bold text-xs transition-all shadow-sm">
+                                Learn More
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Open Detail Modal
+        function openActivityDetails(actId) {
+            const act = ACTIVITIES.find(a => a.id === actId);
+            if (!act) return;
+
+            const content = document.getElementById('modal-detail-content');
+            const isSaved = savedClubs.includes(act.id);
+
+            content.innerHTML = `
+                <div class="space-y-6">
+                    <div class="flex items-start justify-between pr-8">
+                        <div>
+                            <span class="bg-scarlet-50 text-scarlet-600 border border-scarlet-200 text-[10px] font-extrabold px-3 py-1 rounded-full uppercase tracking-wider">
+                                ${act.categoryLabel}
+                            </span>
+                            <h2 class="font-heading text-2xl font-extrabold text-navy-900 mt-2">${act.name}</h2>
+                        </div>
+                    </div>
+
+                    <p class="text-sm text-slate-700 leading-relaxed">${act.description}</p>
+
+                    <!-- Sponsor & Schedule Details Card -->
+                    <div class="bg-slate-50/90 rounded-2xl p-5 border border-slate-200/80 space-y-3">
+                        <div class="flex items-center text-sm text-slate-800">
+                            <i class="fa-solid fa-user-tie text-navy-800 w-7 text-lg"></i>
+                            <div>
+                                <div class="text-[11px] text-slate-400 font-semibold uppercase">Faculty Sponsor / Coach</div>
+                                <div class="font-bold text-navy-900">${act.sponsor}</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start text-sm text-slate-800">
+                            <i class="fa-solid fa-envelope text-scarlet-600 w-7 text-lg mt-0.5"></i>
+                            <div>
+                                <div class="text-[11px] text-slate-400 font-semibold uppercase">Email Contact</div>
+                                <div class="flex flex-wrap gap-2 mt-0.5">
+                                    ${act.email.split(',').map(e => `<a href="mailto:${e.trim()}" class="text-xs text-scarlet-600 font-bold hover:underline bg-scarlet-50 px-2 py-0.5 rounded border border-scarlet-200">${e.trim()}</a>`).join(' ')}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center text-sm text-slate-800">
+                            <i class="fa-solid fa-clock text-navy-800 w-7 text-lg"></i>
+                            <div>
+                                <div class="text-[11px] text-slate-400 font-semibold uppercase">Meeting Schedule</div>
+                                <div class="font-medium text-slate-700">${act.meeting}</div>
+                            </div>
+                        </div>
+
+                        <div class="flex items-center text-sm text-slate-800">
+                            <i class="fa-solid fa-location-dot text-scarlet-600 w-7 text-lg"></i>
+                            <div>
+                                <div class="text-[11px] text-slate-400 font-semibold uppercase">Meeting Location</div>
+                                <div class="font-medium text-slate-700">${act.location}</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Tags -->
+                    <div class="flex flex-wrap gap-1.5 pt-1">
+                        ${act.tags.map(t => `<span class="bg-slate-100 text-slate-600 text-[11px] font-semibold px-2.5 py-1 rounded-lg">#${t}</span>`).join('')}
+                    </div>
+
+                    <!-- Modal Actions -->
+                    <div class="pt-4 border-t border-slate-200 flex items-center justify-between gap-3">
+                        <button onclick="toggleSaveClub('${act.id}')" class="px-4 py-2.5 rounded-xl border border-slate-300 hover:bg-slate-100 text-slate-700 text-xs font-bold flex items-center space-x-2 transition">
+                            <i class="${isSaved ? 'fa-solid text-yellow-500' : 'fa-regular'} fa-bookmark text-sm"></i>
+                            <span>${isSaved ? 'Saved in List' : 'Save Club'}</span>
+                        </button>
+
+                        <button onclick="closeModal('modal-detail'); openRegistrationModal();" class="px-5 py-2.5 rounded-xl gradient-scarlet text-white font-bold text-xs shadow-md hover:brightness-110 transition flex items-center space-x-2">
+                            <i class="fa-solid fa-clipboard-check"></i>
+                            <span>How to Join</span>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            document.getElementById('modal-detail').classList.remove('hidden');
+        }
+
+        function openRegistrationModal() {
+            document.getElementById('modal-registration').classList.remove('hidden');
+        }
+
+        function openSavedModal() {
+            renderSavedClubsList();
+            document.getElementById('modal-saved').classList.remove('hidden');
+        }
+
+        function closeModal(modalId) {
+            document.getElementById(modalId).classList.add('hidden');
+        }
+
+        // Bookmark Handler
+        function toggleSaveClub(actId) {
+            if (savedClubs.includes(actId)) {
+                savedClubs = savedClubs.filter(id => id !== actId);
+            } else {
+                savedClubs.push(actId);
+            }
+
+            localStorage.setItem('chs_saved_clubs', JSON.stringify(savedClubs));
+            updateSavedBadge();
+
+            // Refresh views if open
+            if (!document.getElementById('modal-detail').classList.contains('hidden')) {
+                openActivityDetails(actId);
+            }
+            if (!document.getElementById('screen-explore').classList.contains('hidden')) {
+                renderExploreGrid();
+            }
+            if (!document.getElementById('modal-saved').classList.contains('hidden')) {
+                renderSavedClubsList();
+            }
+        }
+
+        function updateSavedBadge() {
+            const badge = document.getElementById('saved-badge');
+            if (badge) {
+                badge.textContent = savedClubs.length;
+                if (savedClubs.length > 0) {
+                    badge.classList.remove('hidden');
+                } else {
+                    badge.classList.add('hidden');
+                }
+            }
+        }
+
+        function renderSavedClubsList() {
+            const container = document.getElementById('saved-clubs-list-container');
+            if (!container) return;
+
+            if (savedClubs.length === 0) {
+                container.innerHTML = `
+                    <div class="text-center py-8 text-slate-400">
+                        <i class="fa-regular fa-bookmark text-3xl mb-2"></i>
+                        <p class="text-sm font-medium">No saved clubs yet!</p>
+                        <p class="text-xs text-slate-400 mt-0.5">Click the bookmark icon on any club card to save it here.</p>
+                    </div>
+                `;
+                return;
+            }
+
+            const savedObjects = ACTIVITIES.filter(a => savedClubs.includes(a.id));
+
+            container.innerHTML = savedSavedClubsListHtml(savedObjects);
+        }
+
+        function savedSavedClubsListHtml(savedObjects) {
+            return savedObjects.map(act => `
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-between">
+                    <div>
+                        <span class="text-[10px] font-extrabold text-scarlet-600 uppercase tracking-wider">${act.categoryLabel}</span>
+                        <h4 class="font-heading font-bold text-navy-900 text-sm">${act.name}</h4>
+                        <p class="text-xs text-slate-500">${act.meeting} • ${act.location}</p>
+                    </div>
+
+                    <div class="flex items-center space-x-2">
+                        <button onclick="openActivityDetails('${act.id}')" class="px-3 py-1.5 rounded-lg gradient-navy text-white text-xs font-bold shadow-sm">
+                            View
+                        </button>
+                        <button onclick="toggleSaveClub('${act.id}')" class="p-2 text-slate-400 hover:text-red-500 transition">
+                            <i class="fa-solid fa-trash-can"></i>
+                        </button>
+                    </div>
+                </div>
+            `).join('');
+        }
+    </script>
+</body>
+</html>
