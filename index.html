@@ -302,8 +302,8 @@
                             <i class="fa-solid fa-bullseye"></i>
                         </div>
                         <div>
-                            <h3 class="font-heading font-extrabold text-navy-900 text-lg">Your Top Club Matches!</h3>
-                            <p class="text-xs text-slate-600">Based on your interests, availability, and goals.</p>
+                            <h3 class="font-heading font-extrabold text-navy-900 text-lg">Your Club Matches, Ranked!</h3>
+                            <p class="text-xs text-slate-600">Start with your top six, then view more in match-percentage order.</p>
                         </div>
                     </div>
                     <button onclick="resetQuiz()" class="px-4 py-2 rounded-xl bg-white border border-slate-200 text-slate-700 text-xs font-bold hover:bg-slate-50 transition shadow-sm">
@@ -313,6 +313,12 @@
 
                 <div id="quiz-matches-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                     <!-- Cards injected here -->
+                </div>
+
+                <div id="quiz-more-matches" class="hidden flex justify-center pt-2">
+                    <button id="quiz-more-matches-btn" onclick="showMoreQuizMatches()" class="px-6 py-3 rounded-xl gradient-navy text-white text-sm font-bold shadow-md hover:opacity-95 transition">
+                        Show More Matches <i class="fa-solid fa-chevron-down ml-1.5"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -1952,6 +1958,8 @@
         // APP STATE
         let currentQuizStep = 0;
         let quizAnswers = {};
+        let quizMatchResults = [];
+        let visibleQuizMatchCount = 6;
         let activeCategory = "all";
         let savedClubs = [];
 
@@ -2090,8 +2098,11 @@
         function resetQuiz() {
             currentQuizStep = 0;
             quizAnswers = {};
+            quizMatchResults = [];
+            visibleQuizMatchCount = 6;
             document.getElementById("quiz-card").classList.remove("hidden");
             document.getElementById("quiz-results").classList.add("hidden");
+            document.getElementById("quiz-more-matches").classList.add("hidden");
             renderQuizStep();
         }
 
@@ -2099,7 +2110,7 @@
             document.getElementById("quiz-card").classList.add("hidden");
             document.getElementById("quiz-results").classList.remove("hidden");
 
-            const scoredActivities = ACTIVITIES.map(act => {
+            quizMatchResults = ACTIVITIES.map(act => {
                 let score = 0;
 
                 // 1. Category/Interest match (up to 40 pts)
@@ -2137,13 +2148,34 @@
                 return { ...act, matchScore: Math.min(score, 98) };
             });
 
-            scoredActivities.sort((a, b) => b.matchScore - a.matchScore);
-            const topMatches = scoredActivities.slice(0, 3);
+            quizMatchResults.sort((a, b) => b.matchScore - a.matchScore || a.name.localeCompare(b.name));
+            visibleQuizMatchCount = Math.min(6, quizMatchResults.length);
+            renderQuizMatches();
 
-            const matchesContainer = document.getElementById("quiz-matches-grid");
-            matchesContainer.innerHTML = topMatches.map(act => createClubCardHtml(act, true)).join('');
-            
             document.getElementById("quiz-results").scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function renderQuizMatches() {
+            const matchesContainer = document.getElementById("quiz-matches-grid");
+            const visibleMatches = quizMatchResults.slice(0, visibleQuizMatchCount);
+            matchesContainer.innerHTML = visibleMatches.map(act => createClubCardHtml(act, true)).join('');
+
+            const moreContainer = document.getElementById("quiz-more-matches");
+            const moreButton = document.getElementById("quiz-more-matches-btn");
+            const remainingMatches = quizMatchResults.length - visibleQuizMatchCount;
+
+            if (remainingMatches > 0) {
+                const nextBatchSize = Math.min(6, remainingMatches);
+                moreButton.innerHTML = `Show ${nextBatchSize} More ${nextBatchSize === 1 ? 'Match' : 'Matches'} <i class="fa-solid fa-chevron-down ml-1.5"></i>`;
+                moreContainer.classList.remove("hidden");
+            } else {
+                moreContainer.classList.add("hidden");
+            }
+        }
+
+        function showMoreQuizMatches() {
+            visibleQuizMatchCount = Math.min(visibleQuizMatchCount + 6, quizMatchResults.length);
+            renderQuizMatches();
         }
 
         // DIRECTORY FILTER LOGIC
