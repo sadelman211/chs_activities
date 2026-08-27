@@ -2145,44 +2145,59 @@
             document.getElementById("quiz-results").classList.remove("hidden");
 
             quizMatchResults = ACTIVITIES.map(act => {
-                let score = 0;
-
-                // 1. Category/Interest match (up to 40 pts)
                 const selectedInterests = quizAnswers.interest || [];
-                if (selectedInterests.length > 0 && selectedInterests.includes(act.category)) {
-                    score += 40;
-                }
-
-                // 2. Commitment level match (up to 25 pts)
                 const selectedCommitments = quizAnswers.time || [];
-                if (selectedCommitments.length > 0 && selectedCommitments.includes(act.commitment)) {
-                    score += 25;
-                }
-
-                // 3. Day match (up to 20 pts)
                 const selectedDays = quizAnswers.day || [];
-                if (selectedDays.length > 0) {
-                    if (selectedDays.includes("any") || selectedDays.some(d => act.meeting.toLowerCase().includes(d.toLowerCase()))) {
-                        score += 20;
-                    }
-                }
-
-                // 4. Goal match (up to 15 pts)
                 const selectedGoals = quizAnswers.goal || [];
-                if (selectedGoals.length > 0) {
-                    let matchedGoal = false;
-                    if (selectedGoals.includes("resume") && (act.tags.includes("competition") || act.tags.includes("leadership"))) matchedGoal = true;
-                    if (selectedGoals.includes("social") && (act.tags.includes("social") || act.tags.includes("casual") || act.tags.includes("relaxed"))) matchedGoal = true;
-                    if (selectedGoals.includes("skills") && (act.tags.includes("coding") || act.tags.includes("engineering") || act.tags.includes("design"))) matchedGoal = true;
-                    if (selectedGoals.includes("giveback") && (act.tags.includes("service") || act.tags.includes("community"))) matchedGoal = true;
 
-                    if (matchedGoal) score += 15;
-                }
+                // Choices within each question use OR logic: one selected option
+                // matching the club earns the full weight for that question.
+                const interestMatch = selectedInterests.some(interest => interest === act.category);
+                const commitmentMatch = selectedCommitments.some(level => level === act.commitment);
+                const dayMatch = selectedDays.some(day =>
+                    day === "any" ||
+                    day === act.day ||
+                    act.meeting.toLowerCase().includes(day.toLowerCase())
+                );
+                const goalMatch = selectedGoals.some(goal => {
+                    if (goal === "resume") {
+                        return act.category === "competitive" ||
+                            act.category === "student-government" ||
+                            act.tags.some(tag => ["competition", "leadership", "academics", "career"].includes(tag));
+                    }
+                    if (goal === "social") {
+                        return act.tags.some(tag => ["social", "casual", "relaxed", "friends"].includes(tag));
+                    }
+                    if (goal === "skills") {
+                        return act.tags.some(tag => ["coding", "engineering", "design", "hands-on", "technology", "creative"].includes(tag));
+                    }
+                    if (goal === "giveback") {
+                        return act.category === "impact-service" ||
+                            act.tags.some(tag => ["service", "community", "advocacy", "volunteer"].includes(tag));
+                    }
+                    return false;
+                });
 
-                return { ...act, matchScore: Math.min(score, 98) };
+                const criteriaMatches = [interestMatch, commitmentMatch, dayMatch, goalMatch];
+                const score =
+                    (interestMatch ? 40 : 0) +
+                    (commitmentMatch ? 25 : 0) +
+                    (dayMatch ? 20 : 0) +
+                    (goalMatch ? 15 : 0);
+
+                return {
+                    ...act,
+                    matchScore: Math.min(score, 98),
+                    matchedCriteriaCount: criteriaMatches.filter(Boolean).length
+                };
             });
 
-            quizMatchResults.sort((a, b) => b.matchScore - a.matchScore || a.name.localeCompare(b.name));
+            quizMatchResults.sort((a, b) =>
+                b.matchScore - a.matchScore ||
+                b.matchedCriteriaCount - a.matchedCriteriaCount ||
+                Number(b.popular) - Number(a.popular) ||
+                a.name.localeCompare(b.name)
+            );
             visibleQuizMatchCount = Math.min(6, quizMatchResults.length);
             renderQuizMatches();
 
