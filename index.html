@@ -186,7 +186,7 @@
                         Explore Your Interests. Pursue Your Goals. Find <span class="bg-gradient-to-r from-scarlet-400 via-rose-300 to-scarlet-500 bg-clip-text text-transparent underline decoration-scarlet-500/60 underline-offset-8">What Inspires You</span>.
                     </h1>
                     <p class="text-navy-100 text-base sm:text-lg mb-8 leading-relaxed font-light">
-                        With over 80+ clubs, intramurals, academic teams, and student organizations at Conant, there’s a place for everyone! Take our interactive quiz to receive personalized matches or explore our complete catalog.
+                        With 80+ clubs, intramurals, academic teams, and student organizations at Conant, there’s a place for everyone! Take our interactive quiz to receive personalized matches or explore our complete catalog.
                     </p>
 
                     <!-- Dual Action Cards -->
@@ -329,7 +329,7 @@
             <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 border-b border-slate-200/60">
                 <div>
                     <h2 class="font-heading text-2xl font-extrabold text-navy-900">Activity Directory</h2>
-                    <p class="text-xs text-slate-500">Meeting Schedules, Rooms, Faculty Sponsors, and Schoology Codes.</p>
+                    <p class="text-xs text-slate-500">Meeting schedules, locations, and faculty sponsors.</p>
                 </div>
                 <div class="text-xs text-slate-500 font-medium glass-panel px-4 py-2 rounded-xl">
                     Showing <span id="directory-count" class="font-bold text-navy-900">0</span> clubs
@@ -341,7 +341,7 @@
                 <!-- Search Input -->
                 <div class="relative">
                     <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400 text-sm"></i>
-                    <input type="text" id="search-input" oninput="filterDirectory()" placeholder="Search by club name, room #, sponsor, keyword, or Schoology code..." class="w-full pl-11 pr-4 py-3 rounded-xl bg-white/70 border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-600 focus:bg-white transition backdrop-blur-sm">
+                    <input type="text" id="search-input" oninput="filterDirectory()" placeholder="Search by club name, location, sponsor, or keyword..." class="w-full pl-11 pr-4 py-3 rounded-xl bg-white/70 border border-slate-200 text-sm focus:outline-none focus:ring-2 focus:ring-navy-600 focus:bg-white transition backdrop-blur-sm">
                 </div>
 
                 <!-- Category Pills -->
@@ -495,7 +495,7 @@
         const ACTIVITIES = [
             {
                 id: "bpa-club",
-                name: "BPA (Business Professionals of America)",
+                name: "FBLA (Future Business Leaders of America)",
                 category: "competitive",
                 categoryLabel: "Competitive Clubs",
                 icon: "fa-chart-line",
@@ -503,10 +503,9 @@
                 description: "Business Professionals of America focuses on marketing, investments, financial planning, leadership, and regional/state career development competitions.",
                 meeting: "Varies - Posted in Schoology (Before/After School)",
                 location: "TBD",
-                advisor: "Patricia Ertl, Maren Hilgendorf, Brian Schroeck, Jodie Weintraub",
+                advisor: "Patti Ertl, Maren Hilgendorf, Sonia Hollis",
                 commitment: "High",
                 day: "any",
-                schoology: "BK6Z-47BJ-WTTV2",
                 tags: ["leadership", "business", "competition"],
                 popular: true
             },
@@ -523,7 +522,6 @@
                 advisor: "Tony Miller",
                 commitment: "Medium",
                 day: "Thursday",
-                schoology: "25MX-QDSS-M2394",
                 tags: ["finance", "business", "academics"],
                 popular: false
             },
@@ -540,7 +538,6 @@
                 advisor: "Jon Babcock, Judy Joung, Hannah Kutchek",
                 commitment: "High",
                 day: "Monday",
-                schoology: "WK2W-Q78N7",
                 tags: ["science", "engineering", "competition", "academics"],
                 popular: true
             },
@@ -557,7 +554,6 @@
                 advisor: "Eric LeBlanc",
                 commitment: "High",
                 day: "Tuesday",
-                schoology: "KM9Q-XCT9-SRNMR",
                 tags: ["robotics", "coding", "engineering", "hands-on"],
                 popular: true
             },
@@ -574,7 +570,6 @@
                 advisor: "James Lundquist",
                 commitment: "Medium",
                 day: "Thursday",
-                schoology: "H5H8B-NCMGN",
                 tags: ["debate", "global affairs", "public speaking", "politics"],
                 popular: false
             },
@@ -591,7 +586,6 @@
                 advisor: "Vicky DeGuia, Monika Aubin",
                 commitment: "Medium",
                 day: "Wednesday",
-                schoology: "JBZB-6C2C-654BZ",
                 tags: ["medicine", "healthcare", "service", "science"],
                 popular: true
             },
@@ -608,7 +602,6 @@
                 advisor: "Katherine Apperson-Skobel, Shayna Adelman, Lillie Cawthorne, Benjamin Jones",
                 commitment: "High",
                 day: "Monday",
-                schoology: "JJQTN-VMFP8",
                 tags: ["acting", "stagecraft", "creative", "performance"],
                 popular: true
             },
@@ -625,7 +618,6 @@
                 advisor: "Jamie Peterson",
                 commitment: "Low",
                 day: "Thursday",
-                schoology: "8KR9Z-9WPX9",
                 tags: ["drawing", "painting", "creative", "relaxed"],
                 popular: false
             },
@@ -642,26 +634,8 @@
                 advisor: "Jamie Peterson, Lisa Zara-Brito",
                 commitment: "Low",
                 day: "Friday",
-                schoology: "8KR9Z-9WPX9",
                 tags: ["crochet", "crafts", "creative", "relaxed"],
                 popular: false
-            },
-            {
-                id: "interact-club",
-                name: "Interact & Service Club",
-                category: "impact-service",
-                categoryLabel: "Impact & Service",
-                icon: "fa-hand-holding-heart",
-                color: "bg-scarlet-600",
-                description: "Student-led service organization focused on developing character, volunteer projects, food drives, and local community outreach.",
-                meeting: "Thursdays (2x/month), 7:40am - 8:10am",
-                location: "Room 107 / Room 133",
-                advisor: "Paula Hill, Angelica Cordova, Pam Cullotta",
-                commitment: "Low",
-                day: "Thursday",
-                schoology: "RN9F-Z829-JGBZ4",
-                tags: ["volunteering", "community", "leadership", "social"],
-                popular: true
             },
             {
                 id: "math-team",
@@ -676,7 +650,6 @@
                 advisor: "Richard Cortez, Derek Fivelson, Meg McCaliano, Andrea Willis, Amar Patel",
                 commitment: "Medium",
                 day: "Wednesday",
-                schoology: "ZBKZ-HN5F-M5VVQ",
                 tags: ["math", "logic", "puzzles", "competition"],
                 popular: false
             },
@@ -693,13 +666,12 @@
                 advisor: "Dave Moravek, Monika Aubin, Patti Ertl",
                 commitment: "High",
                 day: "Tuesday",
-                schoology: "45GB-W5PF-BBZHQ",
                 tags: ["leadership", "school spirit", "planning", "events"],
                 popular: true
             },
             {
                 id: "chess-club",
-                name: "Chess Team & Club",
+                name: "Chess Team",
                 category: "competitive",
                 categoryLabel: "Competitive Clubs",
                 icon: "fa-chess",
@@ -710,26 +682,40 @@
                 advisor: "Andy Barrientos, David Jonen",
                 commitment: "Low",
                 day: "Monday",
-                schoology: "TWWDP-MDK8Z",
                 tags: ["strategy", "gaming", "casual", "competition"],
                 popular: false
             },
             {
                 id: "gaming-esports",
-                name: "eSports & Gaming Club",
+                name: "eSports Club",
                 category: "competitive",
                 categoryLabel: "Competitive Clubs",
                 icon: "fa-gamepad",
                 color: "bg-violet-600",
-                description: "Connect for Smash Bros, Rocket League, Valorant, and tabletop D&D games. Compete in high school esports leagues or play casually.",
-                meeting: "Wednesdays (eSports) / Mondays (D&D), 3:30pm - 4:30pm",
-                location: "Room 236 / Room 255",
-                advisor: "John Blonde, Chris Mattson, Dave Torpe",
+                description: "Compete in Smash Bros, Rocket League, Valorant, and other titles through high school esports leagues.",
+                meeting: "Wednesdays, 3:30pm - 4:30pm",
+                location: "Room 236",
+                advisor: "John Blonde, Chris Mattson",
                 commitment: "Low",
                 day: "Wednesday",
-                schoology: "VXG7-B44K-5SCWR",
-                tags: ["video games", "esports", "social", "relaxed"],
+                tags: ["video games", "esports", "competition", "social"],
                 popular: true
+            },
+            {
+                id: "gaming-club-dungeons-dragons",
+                name: "Gaming Club (Dungeons & Dragons)",
+                category: "special-interest",
+                categoryLabel: "Special Interest",
+                icon: "fa-dice-d20",
+                color: "bg-purple-600",
+                description: "Details coming soon.",
+                meeting: "Mondays, 3:30pm - 6:00pm",
+                location: "Room 225",
+                advisor: "Luke Jenner, Dave Torpe, Josh Harbeck",
+                commitment: "Low",
+                day: "Monday",
+                tags: ["tabletop games", "role-playing", "social", "creative"],
+                popular: false
             },
             {
                 id: "environmental-club",
@@ -744,7 +730,6 @@
                 advisor: "Lisa Zara-Brito, Dave Moravek",
                 commitment: "Low",
                 day: "Wednesday",
-                schoology: "GNZ8-R5JT-DCV97",
                 tags: ["nature", "environment", "sustainability", "service"],
                 popular: false
             },
@@ -761,7 +746,6 @@
                 advisor: "Judy Joung, Paul Kim",
                 commitment: "Low",
                 day: "Tuesday",
-                schoology: "44XW-CNXM-2RKH6",
                 tags: ["culture", "community", "food", "social"],
                 popular: true
             },
@@ -778,7 +762,6 @@
                 advisor: "Magalene Johnson",
                 commitment: "Low",
                 day: "Wednesday",
-                schoology: "H7GS-X8NT-GRM86",
                 tags: ["culture", "advocacy", "community", "leadership"],
                 popular: false
             },
@@ -795,7 +778,6 @@
                 advisor: "Camille Lutz, Jake Schlender",
                 commitment: "High",
                 day: "Thursday",
-                schoology: "Z3QJB-WHTS7",
                 tags: ["photography", "design", "writing", "journalism"],
                 popular: false
             },
@@ -812,13 +794,12 @@
                 advisor: "Rich Cortez, Mary Toman",
                 commitment: "Medium",
                 day: "any",
-                schoology: "KW46-C49K-3D4D3",
                 tags: ["coding", "computer science", "python", "tech"],
                 popular: true
             },
             {
                 id: "crier-newspaper",
-                name: "Crier Newspaper",
+                name: "Conant Crier (Newspaper)",
                 category: "journalism",
                 categoryLabel: "Journalism",
                 icon: "fa-newspaper",
@@ -826,10 +807,9 @@
                 description: "Conant's official student newspaper. Write investigative articles, opinion pieces, sports coverage, photography, and online publishing.",
                 meeting: "Wednesdays, 3:30pm - 4:30pm",
                 location: "Room 218",
-                advisor: "David Gwizdala, Katie Sall",
+                advisor: "Roshonda Dudlicek",
                 commitment: "Medium",
                 day: "Wednesday",
-                schoology: "RP89-KSFK-JCCNS",
                 tags: ["journalism", "writing", "news", "media"],
                 popular: false
             },
@@ -846,7 +826,6 @@
                 advisor: "Lauren Pieper",
                 commitment: "Medium",
                 day: "Wednesday",
-                schoology: "G4QB-RWMC-CRKWP",
                 tags: ["trivia", "academics", "competition", "knowledge"],
                 popular: false
             },
@@ -863,7 +842,6 @@
                 advisor: "Brenda Moreno, Angelica Ortiz, Lisa Zara-Brito",
                 commitment: "Low",
                 day: "Tuesday",
-                schoology: "MGCT-QWDZ-HCMVP",
                 tags: ["culture", "community", "social", "heritage"],
                 popular: false
             },
@@ -880,7 +858,6 @@
                 advisor: "James Lundquist",
                 commitment: "Low",
                 day: "Tuesday",
-                schoology: "958T-DJQT-7MG2C",
                 tags: ["culture", "faith", "community", "service"],
                 popular: false
             },
@@ -897,7 +874,6 @@
                 advisor: "Paul Kim",
                 commitment: "Medium",
                 day: "Thursday",
-                schoology: "MWQC8-HM845",
                 tags: ["coding", "hackathon", "technology", "projects"],
                 popular: false
             },
@@ -914,7 +890,6 @@
                 advisor: "Joe Tullo",
                 commitment: "Medium",
                 day: "Wednesday",
-                schoology: "3BR32-48WFX",
                 tags: ["cars", "mechanics", "hands-on"],
                 popular: false
             },
@@ -931,7 +906,6 @@
                 advisor: "Desi Rae Stricker",
                 commitment: "Low",
                 day: "Monday",
-                schoology: "H564-C8FZ-V67MF",
                 tags: ["reading", "books", "discussion", "relaxed"],
                 popular: false
             },
@@ -948,7 +922,6 @@
                 advisor: "Brian Schroeck",
                 commitment: "Medium",
                 day: "Tuesday",
-                schoology: "S5R6-PXKS-WRXFJ",
                 tags: ["broadcasting", "video", "sports", "media"],
                 popular: false
             },
@@ -965,7 +938,6 @@
                 advisor: "Lichien Chan",
                 commitment: "Low",
                 day: "Thursday",
-                schoology: "WTKVPHF9-RTCKS",
                 tags: ["culture", "language", "community", "social"],
                 popular: false
             },
@@ -982,42 +954,7 @@
                 advisor: "Desi Rae Stricker, Terry Prusnick",
                 commitment: "High",
                 day: "Monday",
-                schoology: "2XJHX-JF6X4",
                 tags: ["performance", "music", "teamwork"],
-                popular: false
-            },
-            {
-                id: "cougar-climb",
-                name: "Cougar Climb",
-                category: "impact-service",
-                categoryLabel: "Impact & Service",
-                icon: "fa-mountain",
-                color: "bg-emerald-600",
-                description: "Monthly gathering focused on building school connection, mentorship, and student wellbeing through guided activities.",
-                meeting: "Monthly (1st Thu / 1st Fri), 7:30am",
-                location: "Room 123",
-                advisor: "Erik Hauser, CathyAnn Smith",
-                commitment: "Low",
-                day: "Thursday",
-                schoology: "X4JG-ZCBC-3HZPT",
-                tags: ["wellness", "community", "mentorship"],
-                popular: false
-            },
-            {
-                id: "cougars-united",
-                name: "Cougars United",
-                category: "student-government",
-                categoryLabel: "Student Government",
-                icon: "fa-people-roof",
-                color: "bg-navy-700",
-                description: "Cougars United is considered a club that serves as a “bridge” for all of the clubs here at Conant High School. Our purpose is to build community and provide opportunities for growth, learning and collaboration. We meet once a month with one to two representatives from each club to communicate about fundraisers, events, and performance activities each club is hosting throughout the year. This unified structure allows for clubs to connect with each other and work together when needed to create sustainable events for the whole Conant community. Our year culminates in Senior Activity Stars night in May where outstanding seniors involved in student activities are honored for their efforts.",
-                meeting: "Once a month during the school day",
-                location: "Auditorium",
-                advisor: "Jodie Weintraub, CathyAnn Smith",
-                commitment: "Medium",
-                day: "any",
-                schoology: "96X5-BBB4-N3Z2T",
-                tags: ["leadership", "invite only"],
                 popular: false
             },
             {
@@ -1033,26 +970,8 @@
                 advisor: "Attiya Mirza",
                 commitment: "Medium",
                 day: "Tuesday",
-                schoology: "7NST-WS32-JK6ZB",
                 tags: ["sports", "cricket", "teamwork", "outdoors"],
                 popular: false
-            },
-            {
-                id: "culinary-arts-club",
-                name: "Culinary Arts Club",
-                category: "special-interest",
-                categoryLabel: "Special Interest",
-                icon: "fa-utensils",
-                color: "bg-orange-600",
-                description: "Cook and bake a variety of recipes while learning kitchen skills, food safety, and culinary technique in a hands-on setting.",
-                meeting: "Thursdays, 7:30am-8:10am & 3:30pm-4:30pm",
-                location: "Room 171",
-                advisor: "Fatima Candia",
-                commitment: "Medium",
-                day: "Thursday",
-                schoology: "VNKN-ZV9M-MBW59",
-                tags: ["cooking", "food", "hands-on", "creative"],
-                popular: true
             },
             {
                 id: "cultural-awareness-club",
@@ -1067,25 +986,7 @@
                 advisor: "Amy Spizzirri, Patrick Malloy, Brittany Potts",
                 commitment: "Low",
                 day: "Wednesday",
-                schoology: "8P5J-CXJF-P6QTF",
                 tags: ["culture", "community", "diversity", "social"],
-                popular: false
-            },
-            {
-                id: "debate-public-forum",
-                name: "Debate Team (Public Forum)",
-                category: "competitive",
-                categoryLabel: "Competitive Clubs",
-                icon: "fa-scale-balanced",
-                color: "bg-amber-700",
-                description: "Research and debate current-event topics in a two-on-two format, developing argumentation, rebuttal, and public speaking skills.",
-                meeting: "Tuesdays & Thursdays, 3:40pm - 4:45pm",
-                location: "Room 202",
-                advisor: "Elizabeth Dopke-Jimenez, Vivian Zyrkowski",
-                commitment: "High",
-                day: "Tuesday",
-                schoology: "TT84F-VQ52V",
-                tags: ["debate", "public speaking", "competition", "research"],
                 popular: false
             },
             {
@@ -1101,7 +1002,6 @@
                 advisor: "Gary Schumacher, Elizabeth Dopke-Jimenez",
                 commitment: "High",
                 day: "Tuesday",
-                schoology: "CSM8K-9BCC7",
                 tags: ["debate", "public speaking", "competition", "government"],
                 popular: false
             },
@@ -1118,7 +1018,6 @@
                 advisor: "Luke Jenner",
                 commitment: "Medium",
                 day: "Tuesday",
-                schoology: "G7W82-DVFTR",
                 tags: ["video", "filmmaking", "creative", "media"],
                 popular: false
             },
@@ -1135,30 +1034,12 @@
                 advisor: "Angela Drenth",
                 commitment: "Low",
                 day: "Wednesday",
-                schoology: "",
                 tags: ["education", "mentorship", "career"],
                 popular: false
             },
             {
-                id: "electronics-club",
-                name: "Electronics Club",
-                category: "special-interest",
-                categoryLabel: "Special Interest",
-                icon: "fa-microchip",
-                color: "bg-cyan-700",
-                description: "Design and build circuits and electronic gadgets, exploring soldering, prototyping, and basic embedded programming.",
-                meeting: "Thursdays, 3:30pm",
-                location: "Room 176",
-                advisor: "Joe Tullo",
-                commitment: "Medium",
-                day: "Thursday",
-                schoology: "XZ6CM-KGMSF",
-                tags: ["electronics", "engineering", "hands-on", "tech"],
-                popular: false
-            },
-            {
                 id: "fccla",
-                name: "FCCLA",
+                name: "FCS/FCCLA",
                 category: "competitive",
                 categoryLabel: "Competitive Clubs",
                 icon: "fa-house-chimney-user",
@@ -1166,10 +1047,9 @@
                 description: "Family, Career and Community Leaders of America builds leadership and life skills through family, career, and community-focused projects.",
                 meeting: "2nd Semester, Tuesday mornings, 7:30am - 8:10am",
                 location: "Room 170/183",
-                advisor: "Jackie Brown",
+                advisor: "Jackie Brown, Fatima Candia",
                 commitment: "Low",
                 day: "Tuesday",
-                schoology: "DGV3X7GBSF",
                 tags: ["leadership", "career", "family", "community"],
                 popular: false
             },
@@ -1186,7 +1066,6 @@
                 advisor: "Matthew Meyer, Lori Stella, Grace Brown",
                 commitment: "Low",
                 day: "Friday",
-                schoology: "QDQZQ-3FG74",
                 tags: ["faith", "community", "fellowship"],
                 popular: false
             },
@@ -1203,7 +1082,6 @@
                 advisor: "Dave Cromer",
                 commitment: "Low",
                 day: "Friday",
-                schoology: "TV4GS-HG9FJ",
                 tags: ["outdoors", "fishing", "relaxed"],
                 popular: false
             },
@@ -1220,7 +1098,6 @@
                 advisor: "Jodie Weintraub",
                 commitment: "Low",
                 day: "Friday",
-                schoology: "JR837-69DT2",
                 tags: ["leadership", "school spirit", "planning"],
                 popular: false
             },
@@ -1237,7 +1114,6 @@
                 advisor: "Bina Rubinson, Jodie Weintraub",
                 commitment: "Low",
                 day: "any",
-                schoology: "",
                 tags: ["culture", "faith", "community"],
                 popular: false
             },
@@ -1254,7 +1130,6 @@
                 advisor: "Samantha Serrano",
                 commitment: "Low",
                 day: "Monday",
-                schoology: "F9MQ-75HH-VXK2Q",
                 tags: ["geography", "trivia", "academics", "social"],
                 popular: false
             },
@@ -1271,7 +1146,6 @@
                 advisor: "Angela Drenth, Maria Kandalepas, Victoria Zervos",
                 commitment: "Low",
                 day: "any",
-                schoology: "3BFH55FMDWSW4",
                 tags: ["culture", "community", "heritage"],
                 popular: false
             },
@@ -1288,7 +1162,6 @@
                 advisor: "Dave Moravek, Tim Harte",
                 commitment: "Low",
                 day: "any",
-                schoology: "3DDZ-SBZ3-FSMHM",
                 tags: ["cooking", "food", "relaxed", "social"],
                 popular: false
             },
@@ -1305,7 +1178,6 @@
                 advisor: "Edgar Huerta",
                 commitment: "Medium",
                 day: "Tuesday",
-                schoology: "BTDQ-FBQN-Z5D35",
                 tags: ["music", "guitar", "creative", "performance"],
                 popular: false
             },
@@ -1322,7 +1194,6 @@
                 advisor: "Shayna Adelman, Zak Zerby, Katherine Apperson-Skobel",
                 commitment: "Medium",
                 day: "Friday",
-                schoology: "GGHK-6XN7-26PZ3",
                 tags: ["acting", "comedy", "performance", "creative"],
                 popular: false
             },
@@ -1339,7 +1210,6 @@
                 advisor: "Kreg Moorhouse",
                 commitment: "High",
                 day: "Monday",
-                schoology: "3JQZ-DKNB-X26Z8",
                 tags: ["music", "performance", "band"],
                 popular: false
             },
@@ -1356,7 +1226,6 @@
                 advisor: "Shannon Malone, Karin Lichtenberger",
                 commitment: "Medium",
                 day: "Thursday",
-                schoology: "DBZZ-KHN6-264XH",
                 tags: ["leadership", "school spirit", "planning", "events"],
                 popular: false
             },
@@ -1373,43 +1242,8 @@
                 advisor: "Victoria DeGuia",
                 commitment: "Medium",
                 day: "Thursday",
-                schoology: "8J5M-BCWZ-W8HXS",
                 tags: ["medicine", "healthcare", "career", "science"],
                 popular: false
-            },
-            {
-                id: "modern-music-masters",
-                name: "Modern Music Masters (Tri-M Honor Society)",
-                category: "fine-arts",
-                categoryLabel: "Fine Arts & Performance",
-                icon: "fa-award",
-                color: "bg-purple-800",
-                description: "Invite-only music honor society recognizing outstanding student musicians through service, leadership, and performance projects.",
-                meeting: "2x/month (see board schedule), 7:45am or 3:45pm",
-                location: "Room A160",
-                advisor: "Tim Koll, Leann Roder-Manson",
-                commitment: "Medium",
-                day: "any",
-                schoology: "SX82-P9NV-R23S7",
-                tags: ["music", "leadership", "honor society", "invite only"],
-                popular: false
-            },
-            {
-                id: "national-honor-society",
-                name: "National Honor Society",
-                category: "impact-service",
-                categoryLabel: "Impact & Service",
-                icon: "fa-award",
-                color: "bg-navy-800",
-                description: "Invite-only honor society recognizing scholarship, leadership, service, and character through community projects and events.",
-                meeting: "Select Wednesdays, 7:30am",
-                location: "Auditorium",
-                advisor: "Jackie Brown, Jeff Stewart",
-                commitment: "Medium",
-                day: "Wednesday",
-                schoology: "KJJCMDC3TT",
-                tags: ["leadership", "service", "academics", "invite only"],
-                popular: true
             },
             {
                 id: "operation-snowball",
@@ -1424,7 +1258,6 @@
                 advisor: "Emilia Marvucic",
                 commitment: "Medium",
                 day: "Wednesday",
-                schoology: "R5DM-GP8T-36Q3N",
                 tags: ["wellness", "community", "leadership"],
                 popular: false
             },
@@ -1441,7 +1274,6 @@
                 advisor: "Pamela Cullotta, Arden Panek, Olya Lykourentzos",
                 commitment: "High",
                 day: "Monday",
-                schoology: "347F-8RSP-R577J",
                 tags: ["dance", "performance", "creative"],
                 popular: false
             },
@@ -1458,7 +1290,6 @@
                 advisor: "David Cromer",
                 commitment: "Low",
                 day: "Wednesday",
-                schoology: "F2NW-FRB4-3XPKD",
                 tags: ["outdoors", "fitness", "adventure"],
                 popular: false
             },
@@ -1475,25 +1306,7 @@
                 advisor: "Kelly Anderson, Josie Garcia",
                 commitment: "Low",
                 day: "Tuesday",
-                schoology: "TVBZ-Q39V-N6PWR",
                 tags: ["service", "community", "friendship"],
-                popular: false
-            },
-            {
-                id: "peer-mediation",
-                name: "Peer Mediation",
-                category: "impact-service",
-                categoryLabel: "Impact & Service",
-                icon: "fa-handshake",
-                color: "bg-teal-600",
-                description: "Invite-only program training students to mediate peer conflicts and build conflict-resolution skills across the school.",
-                meeting: "Select Tuesdays, 7:30am - 8:10am",
-                location: "Room 111",
-                advisor: "Neal Hannant, Margaret Roesslein",
-                commitment: "Medium",
-                day: "Tuesday",
-                schoology: "DGVC-QBGZ-2X3KZ",
-                tags: ["leadership", "conflict resolution", "invite only"],
                 popular: false
             },
             {
@@ -1509,7 +1322,6 @@
                 advisor: "Amanda Schweinebraten, Christina Schweinebraten-Melone",
                 commitment: "Low",
                 day: "Tuesday",
-                schoology: "CRZP-HZCB-SHGXH",
                 tags: ["school spirit", "social", "sports"],
                 popular: true
             },
@@ -1526,7 +1338,6 @@
                 advisor: "Brian Schroeck",
                 commitment: "Low",
                 day: "Monday",
-                schoology: "5BPS-PBQG-3VWVK",
                 tags: ["photography", "creative", "media"],
                 popular: false
             },
@@ -1543,7 +1354,6 @@
                 advisor: "Caleb Cochrum",
                 commitment: "Low",
                 day: "Tuesday",
-                schoology: "D94DB-3QJQ2",
                 tags: ["sports", "casual", "social"],
                 popular: false
             },
@@ -1560,7 +1370,6 @@
                 advisor: "Dave Cromer, Jon Janus, Victoria Zervos",
                 commitment: "Medium",
                 day: "any",
-                schoology: "XBSH-79XW-7RM8B",
                 tags: ["fitness", "strength", "sports"],
                 popular: false
             },
@@ -1577,7 +1386,6 @@
                 advisor: "Eric LeBlanc",
                 commitment: "TBD",
                 day: "Monday",
-                schoology: "",
                 tags: ["fitness", "strength", "wellness", "recreation"],
                 popular: false
             },
@@ -1594,25 +1402,7 @@
                 advisor: "Heather Doan",
                 commitment: "Low",
                 day: "Thursday",
-                schoology: "8MX-TB86-PK6RR",
                 tags: ["mentorship", "community", "support"],
-                popular: false
-            },
-            {
-                id: "sadd-club",
-                name: "SADD",
-                category: "impact-service",
-                categoryLabel: "Impact & Service",
-                icon: "fa-shield-heart",
-                color: "bg-red-500",
-                description: "Students Against Destructive Decisions promotes healthy choices through awareness campaigns and peer education.",
-                meeting: "Mondays, 3:30pm - 4:30pm",
-                location: "Room 114",
-                advisor: "Jason Sherko",
-                commitment: "Low",
-                day: "Monday",
-                schoology: "9K29-TR46-36GJH",
-                tags: ["wellness", "advocacy", "community"],
                 popular: false
             },
             {
@@ -1628,7 +1418,6 @@
                 advisor: "Al Eschenbrenner",
                 commitment: "Low",
                 day: "any",
-                schoology: "DQTQC-VWBVX",
                 tags: ["culture", "community", "support", "social"],
                 popular: false
             },
@@ -1645,7 +1434,6 @@
                 advisor: "Lichien Chan",
                 commitment: "Low",
                 day: "Thursday",
-                schoology: "J7B5V-JD7GD",
                 tags: ["culture", "community", "social"],
                 popular: false
             },
@@ -1662,7 +1450,6 @@
                 advisor: "Mike Benshish",
                 commitment: "Medium",
                 day: "Thursday",
-                schoology: "G8S6-3F6F-PG2XH",
                 tags: ["music", "performance", "band"],
                 popular: false
             },
@@ -1679,7 +1466,6 @@
                 advisor: "Eric Jacobsen, Steve Kurfess, Amy Differding",
                 commitment: "Medium",
                 day: "Wednesday",
-                schoology: "C5B6-H6MN-FTJV2",
                 tags: ["leadership", "school spirit", "planning", "events"],
                 popular: false
             },
@@ -1696,7 +1482,6 @@
                 advisor: "Angela Drenth",
                 commitment: "Low",
                 day: "Thursday",
-                schoology: "5PPW-J4W2-XCX8V",
                 tags: ["leadership", "school spirit", "planning"],
                 popular: false
             },
@@ -1713,7 +1498,6 @@
                 advisor: "Sean Haracz, Lori Stella, Magalene Johnson",
                 commitment: "High",
                 day: "Monday",
-                schoology: "GWT8F-QCCNS",
                 tags: ["public speaking", "competition", "acting"],
                 popular: false
             },
@@ -1730,13 +1514,12 @@
                 advisor: "Rosanna McHugh",
                 commitment: "Low",
                 day: "Wednesday",
-                schoology: "",
                 tags: ["equity", "advocacy", "community"],
                 popular: false
             },
             {
                 id: "student-wellness-committee",
-                name: "Student Wellness Committee: Bring Change to Mind",
+                name: "BC2M (Bring Change 2 Mind)",
                 category: "impact-service",
                 categoryLabel: "Impact & Service",
                 icon: "fa-brain",
@@ -1744,28 +1527,10 @@
                 description: "Raise mental health awareness and reduce stigma through student-led campaigns and school-wide wellness events.",
                 meeting: "Tuesdays, 3:40pm - 4:40pm",
                 location: "White Team",
-                advisor: "Ashley Langley-Krajack, Devin Godzicki",
+                advisor: "Ashley Langley-Krajack",
                 commitment: "Low",
                 day: "Tuesday",
-                schoology: "BJX4-GS52-TM6VS",
                 tags: ["wellness", "advocacy", "community"],
-                popular: false
-            },
-            {
-                id: "students-supporting-wings",
-                name: "Students Supporting WINGS",
-                category: "impact-service",
-                categoryLabel: "Impact & Service",
-                icon: "fa-hand-holding-heart",
-                color: "bg-fuchsia-600",
-                description: "Support survivors of domestic violence through fundraising and awareness efforts benefiting the WINGS program.",
-                meeting: "Thursdays, 7:45am",
-                location: "Room 132",
-                advisor: "Josh Harbeck",
-                commitment: "Low",
-                day: "Thursday",
-                schoology: "H2RX-VFX4-NSK3K",
-                tags: ["service", "advocacy", "community"],
                 popular: false
             },
             {
@@ -1781,7 +1546,6 @@
                 advisor: "David Gwizdala",
                 commitment: "Medium",
                 day: "Tuesday",
-                schoology: "DQ7P-WM7J-9GSKV",
                 tags: ["writing", "art", "creative", "media"],
                 popular: false
             },
@@ -1798,7 +1562,6 @@
                 advisor: "Abigail Warwick",
                 commitment: "Low",
                 day: "Tuesday",
-                schoology: "KBKH-CQGV-PGGTQ",
                 tags: ["service", "global affairs", "advocacy"],
                 popular: false
             },
@@ -1815,7 +1578,6 @@
                 advisor: "Jon Babcock",
                 commitment: "Medium",
                 day: "Tuesday",
-                schoology: "H8VC8R96-KPWVB",
                 tags: ["woodworking", "hands-on", "creative"],
                 popular: false
             },
@@ -1832,76 +1594,7 @@
                 advisor: "Michael Long",
                 commitment: "Low",
                 day: "Tuesday",
-                schoology: "SBTX-RWJN-GXTJR",
                 tags: ["writing", "creative", "discussion"],
-                popular: false
-            },
-            {
-                id: "wyse-club",
-                name: "WYSE (Worldwide Youth in Science & Engineering)",
-                category: "competitive",
-                categoryLabel: "Competitive Clubs",
-                icon: "fa-flask",
-                color: "bg-emerald-900",
-                description: "Compete in academic tests spanning math, science, and engineering disciplines against other schools.",
-                meeting: "Check Schoology for updates",
-                location: "TBD",
-                advisor: "Lauren Pieper",
-                commitment: "Medium",
-                day: "any",
-                schoology: "CVS2-WMXJ-ZX94S",
-                tags: ["science", "engineering", "competition", "academics"],
-                popular: false
-            },
-            {
-                id: "homework-club",
-                name: "Homework Club (Cougars in Motion)",
-                category: "impact-service",
-                categoryLabel: "Impact & Service",
-                icon: "fa-book-open",
-                color: "bg-cyan-500",
-                description: "Drop-in academic support and tutoring space to catch up on homework and get help from peers, starting second semester.",
-                meeting: "Starts Second Semester, 3:45pm - 6:00pm",
-                location: "Media Center",
-                advisor: "Adrian Herrera",
-                commitment: "Low",
-                day: "any",
-                schoology: "",
-                tags: ["academics", "support", "tutoring"],
-                popular: false
-            },
-            {
-                id: "glowtology-club",
-                name: "Glowtology Club",
-                category: "special-interest",
-                categoryLabel: "Special Interest",
-                icon: "fa-lightbulb",
-                color: "bg-yellow-400",
-                description: "A new club for students to explore creative glow and light-based art and activities.",
-                meeting: "Tuesdays, 7:30am - 8:00am",
-                location: "Room 205",
-                advisor: "Jodie Weintraub, Becky Schomer",
-                commitment: "Low",
-                day: "Tuesday",
-                schoology: "",
-                tags: ["creative", "new club", "social"],
-                popular: false
-            },
-            {
-                id: "paranormal-club",
-                name: "Paranormal Club",
-                category: "special-interest",
-                categoryLabel: "Special Interest",
-                icon: "fa-ghost",
-                color: "bg-purple-900",
-                description: "Discuss and investigate paranormal topics, urban legends, and mysteries in a casual club setting.",
-                meeting: "Select Wednesdays, 3:40pm - 4:40pm",
-                location: "Room 119",
-                advisor: "Michelle Diaz",
-                commitment: "Low",
-                day: "Wednesday",
-                schoology: "6T4M-SS8N-2ZR38",
-                tags: ["mystery", "discussion", "casual"],
                 popular: false
             },
             {
@@ -1917,8 +1610,39 @@
                 advisor: "Amber Wozniak",
                 commitment: "",
                 day: "Wednesday",
-                schoology: "",
                 tags: [],
+                popular: false
+            },
+            {
+                id: "service-club",
+                name: "Service Club",
+                category: "impact-service",
+                categoryLabel: "Impact & Service",
+                icon: "fa-hand-holding-heart",
+                color: "bg-scarlet-600",
+                description: "Details coming soon.",
+                meeting: "Tuesdays, 7:40am - 8:10am",
+                location: "Room 133",
+                advisor: "Paula Hill, Lori Stella",
+                commitment: "TBD",
+                day: "Tuesday",
+                tags: ["service", "volunteering", "community"],
+                popular: false
+            },
+            {
+                id: "student-ambassadors-interact-club",
+                name: "Student Ambassadors/Interact Club",
+                category: "impact-service",
+                categoryLabel: "Impact & Service",
+                icon: "fa-people-group",
+                color: "bg-teal-600",
+                description: "Details coming soon.",
+                meeting: "Thursdays (8/27, 9/24, 10/29, 11/19, 12/10), 7:40am - 8:10am",
+                location: "Room 108",
+                advisor: "Paula Hill, Angelica Cordova, Pam Cullotta",
+                commitment: "TBD",
+                day: "Thursday",
+                tags: ["leadership", "service", "community", "social"],
                 popular: false
             }
         ];
@@ -2262,7 +1986,7 @@
 
                 // Search Term Filter
                 if (searchTerm) {
-                    const haystack = `${act.name} ${act.description} ${act.advisor} ${act.location} ${act.schoology} ${act.categoryLabel} ${act.tags.join(' ')}`.toLowerCase();
+                    const haystack = `${act.name} ${act.description} ${act.advisor} ${act.location} ${act.categoryLabel} ${act.tags.join(' ')}`.toLowerCase();
                     if (!haystack.includes(searchTerm)) return false;
                 }
 
@@ -2339,7 +2063,7 @@
                             </div>
                             <div class="flex items-center space-x-2">
                                 <i class="fa-solid fa-location-dot w-4 text-slate-400"></i>
-                                <span class="font-medium text-[11px]">Room ${act.location}</span>
+                                <span class="font-medium text-[11px]">${act.location}</span>
                             </div>
                             <div class="flex items-center space-x-2">
                                 <i class="fa-solid fa-user-tie w-4 text-slate-400"></i>
@@ -2350,7 +2074,7 @@
                         <!-- Actions -->
                         <div class="flex items-center space-x-2">
                             <button onclick="openActivityDetails('${act.id}')" class="w-full py-2.5 rounded-xl gradient-navy text-white text-xs font-bold hover:opacity-95 transition shadow-sm text-center">
-                                View Details & Code
+                                View Details
                             </button>
                         </div>
                     </div>
@@ -2399,15 +2123,11 @@
                         </div>
                         <div>
                             <span class="font-bold text-slate-500 block mb-0.5">Meeting Location</span>
-                            <span class="font-bold text-navy-900">Room ${act.location}</span>
+                            <span class="font-bold text-navy-900">${act.location}</span>
                         </div>
                         <div>
                             <span class="font-bold text-slate-500 block mb-0.5">Faculty Sponsor(s)</span>
                             <span class="font-bold text-navy-900">${act.advisor}</span>
-                        </div>
-                        <div>
-                            <span class="font-bold text-slate-500 block mb-0.5">Schoology Access Code</span>
-                            <span class="font-mono font-bold text-scarlet-600 bg-scarlet-50 px-2 py-0.5 rounded border border-scarlet-200 inline-block">${act.schoology || 'N/A'}</span>
                         </div>
                     </div>
 
@@ -2489,7 +2209,7 @@
                     <div>
                         <span class="text-[10px] font-extrabold text-scarlet-600 uppercase tracking-wider">${act.categoryLabel}</span>
                         <h4 class="font-heading font-bold text-navy-900 text-sm">${act.name}</h4>
-                        <p class="text-[11px] text-slate-500">${act.meeting} • Room ${act.location}</p>
+                        <p class="text-[11px] text-slate-500">${act.meeting} • ${act.location}</p>
                     </div>
 
                     <div class="flex items-center space-x-2">
