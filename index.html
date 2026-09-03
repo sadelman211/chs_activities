@@ -345,7 +345,7 @@
                 </div>
 
                 <!-- Category Pills -->
-                <div class="flex items-center space-x-2 overflow-x-auto pb-2 scrollbar-none" id="category-filters">
+                <div class="flex flex-wrap items-stretch gap-2" id="category-filters">
                     <!-- Dynamic category badges injected here -->
                 </div>
 
@@ -517,7 +517,7 @@
                 icon: "fa-sack-dollar",
                 color: "bg-green-600",
                 description: "We meet to discuss anything that has to do with investing and money. Some topics we discuss include individual stocks, mutual funds, long and short term investing, credit cards, loans, scholarships, retirement accounts, etc. This club helps to spark interest in the stock market and shows how to save and invest to prepare for a solid financial future.",
-                meeting: "Thursdays, 3:30pm - 4:30pm",
+                meeting: "Thursdays, 7:30am - 8:00am or 3:30pm - 4:30pm",
                 location: "Room 236",
                 advisor: "Tony Miller",
                 commitment: "Medium",
@@ -742,7 +742,7 @@
                 color: "bg-rose-600",
                 description: "Celebrate Asian American and Pacific Islander heritage, foster cross-cultural dialogue, organize food events, and present cultural showcases.",
                 meeting: "1st & 3rd Tuesday of each month, 3:30pm - 4:30pm",
-                location: "Room 182",
+                location: "Room 182 or Media Center Conference Room B",
                 advisor: "Judy Joung, Paul Kim",
                 commitment: "Low",
                 day: "Tuesday",
@@ -807,7 +807,7 @@
                 description: "Conant's official student newspaper. Write investigative articles, opinion pieces, sports coverage, photography, and online publishing.",
                 meeting: "Wednesdays, 3:30pm - 4:30pm",
                 location: "Room 218",
-                advisor: "Roshonda Dudlicek",
+                advisor: "Ignatzia Kaldahl, Shonda Dudlicek",
                 commitment: "Medium",
                 day: "Wednesday",
                 tags: ["journalism", "writing", "news", "media"],
@@ -1104,8 +1104,8 @@
             {
                 id: "geography-club",
                 name: "Geography Club",
-                category: "special-interest",
-                categoryLabel: "Special Interest",
+                category: "impact-service",
+                categoryLabel: "Impact & Service",
                 icon: "fa-map",
                 color: "bg-lime-700",
                 description: "The Geography Club is open to students as an opportunity to use maps for volunteer hours, civic engagement, and service learning through humanitarian mapping. Club members become members of the American Geographical Society's Teen Maptivist program, where we use Open Street Map (OSM) and HotOSM to crowdsource vectored data on satellite imagery for purposes of humanitarian relief.",
@@ -1114,7 +1114,7 @@
                 advisor: "Samantha Serrano",
                 commitment: "Low",
                 day: "Monday",
-                tags: ["geography", "trivia", "academics", "social"],
+                tags: ["geography", "trivia", "academics", "social", "cultural"],
                 popular: false
             },
             {
@@ -1673,6 +1673,7 @@
             "Grace Brown": "gbrown@d211.org",
             "Hannah Kutchek": "hkutchek@d211.org",
             "Heather Doan": "hdoan@d211.org",
+            "Ignatzia Kaldahl": "wkaldahl@d211.org",
             "Jackie Brown": "jbrown@d211.org",
             "James Lundquist": "jlundquist@d211.org",
             "Jamie Peterson": "jpeterson@d211.org",
@@ -1718,6 +1719,7 @@
             "Samantha Serrano": "sserrano@d211.org",
             "Sean Haracz": "sharacz@d211.org",
             "Shannon Malone": "snmalone@d211.org",
+            "Shonda Dudlicek": "rdudlicek@d211.org",
             "Shayna Adelman": "sadelman@d211.org",
             "Sonia Hollis": "shollis@d211.org",
             "Terry Prusnick": "tprusnick@d211.org",
@@ -1945,7 +1947,9 @@
 
                 // Choices within each question use OR logic: one selected option
                 // matching the club earns the full weight for that question.
-                const interestMatch = selectedInterests.some(interest => interest === act.category);
+                const interestMatch = selectedInterests.some(interest =>
+                    interest === act.category || act.tags.includes(interest)
+                );
                 const commitmentMatch = selectedCommitments.some(level => level === act.commitment);
                 const dayMatch = selectedDays.some(day =>
                     day === "any" ||
@@ -2024,7 +2028,7 @@
         function renderCategoryFilters() {
             const container = document.getElementById("category-filters");
             container.innerHTML = CATEGORIES.map(cat => `
-                <button onclick="setCategory('${cat.id}')" class="px-3.5 py-2 rounded-xl text-xs font-bold whitespace-nowrap transition flex items-center space-x-1.5 ${activeCategory === cat.id ? 'gradient-scarlet text-white shadow-sm' : 'bg-white/60 text-slate-600 hover:bg-white border border-slate-200/60'}">
+                <button onclick="setCategory('${cat.id}')" class="flex-[1_1_9rem] sm:flex-none max-w-full min-h-10 px-3.5 py-2 rounded-xl text-xs font-bold whitespace-normal leading-tight text-center transition flex items-center justify-center gap-1.5 ${activeCategory === cat.id ? 'gradient-scarlet text-white shadow-sm' : 'bg-white/60 text-slate-600 hover:bg-white border border-slate-200/60'}">
                     <i class="fa-solid ${cat.icon} text-xs"></i>
                     <span>${cat.label}</span>
                 </button>
