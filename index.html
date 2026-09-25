@@ -1,3 +1,47 @@
+Activity Information Updates (3).xlsx
+Spreadsheet
+Make the updates in the "Current" tab of the attached spreadsheet. Let me know if you see any issues.
+
+Updated the spreadsheet from the current interactive. It now includes:
+
+All 70 currently listed clubs
+Updated meeting days, times, locations, sponsors, and categories
+A filterable weekly schedule
+An editable visit planner with status dropdowns
+A separate Variable/TBD tab
+
+The school/workspace administrator has disabled the Google Drive connection, so I can’t create the live Google Sheet directly. However, this workbook is fully editable and Google-Sheets-compatible—upload it to Drive and select Open with Google Sheets.
+
+CHS_Club_Visit_Schedule.xlsx
+
+CHS_Club_Visit_Schedule.xlsx
+Spreadsheet
+Today 12:33 PM
+Ok let's go back to editing the website
+
+Sounds good. We’ll return to the latest version of chs-club-match-current-updates.html and leave the spreadsheet unchanged. What would you like to edit next?
+
+The following changes need to be made:
+
+Action	Previous Club Name	Current (Correct) Name	Sponsors	Category	Commitment Level	Meeting Times	Meeting Location
+Location change		Gaming Club (Dungeons & Dragons)					Room 255
+Meeting Days		SAGA				Late Start Tuesdays, 3:30-4:30pm	
+Add Sponsor		School of Rock	Mike Benshish, Karolina Las				
+Change Time and Location		Yearbook (Conavite)				Wednesdays, Thursdays 3:30-4:45pm	Room 140
+Change Time and Location		Conant Crier (Newspaper)				Mondays, 3:30-4:30pm	Room 140
+
+Updated the website with all five changes:
+
+Gaming Club moved to Room 255
+SAGA renamed and changed to Late Start Tuesdays, 3:30–4:30 p.m.
+Karolina Las added as a School of Rock sponsor
+Yearbook changed to Wednesdays and Thursdays, 3:30–4:45 p.m., in Room 140
+Conant Crier changed to Mondays, 3:30–4:30 p.m., in Room 140
+
+Karolina’s name is currently unlinked because her email is not stored in the site.
+
+Download the updated HTML
+
 <!DOCTYPE html>
 <html lang="en" class="scroll-smooth">
 <head>
@@ -710,7 +754,7 @@
                 color: "bg-purple-600",
                 description: "Details coming soon.",
                 meeting: "Mondays, 3:30pm - 6:00pm",
-                location: "Room 225",
+                location: "Room 255",
                 advisor: "Luke Jenner, Dave Torpe, Josh Harbeck",
                 commitment: "Low",
                 day: "Monday",
@@ -773,11 +817,11 @@
                 icon: "fa-camera-retro",
                 color: "bg-orange-600",
                 description: "Capture Conant history! Learn photography, layout design, journalism, interviewing, and digital publishing.",
-                meeting: "Tuesdays & Thursdays, 3:35pm - 4:45pm",
-                location: "Room 141",
+                meeting: "Wednesdays & Thursdays, 3:30pm - 4:45pm",
+                location: "Room 140",
                 advisor: "Camille Lutz",
                 commitment: "High",
-                day: "Thursday",
+                day: "Wednesday",
                 tags: ["photography", "design", "writing", "journalism"],
                 popular: false
             },
@@ -805,11 +849,11 @@
                 icon: "fa-newspaper",
                 color: "bg-slate-800",
                 description: "Conant's official student newspaper. Write investigative articles, opinion pieces, sports coverage, photography, and online publishing.",
-                meeting: "Wednesdays, 3:30pm - 4:30pm",
-                location: "Room 218",
+                meeting: "Mondays, 3:30pm - 4:30pm",
+                location: "Room 140",
                 advisor: "Ignatzia Kaldahl, Shonda Dudlicek",
                 commitment: "Medium",
-                day: "Wednesday",
+                day: "Monday",
                 tags: ["journalism", "writing", "news", "media"],
                 popular: false
             },
@@ -1375,17 +1419,17 @@
             },
             {
                 id: "saga-club",
-                name: "SAGA (Sexuality and Gender Alliance)",
+                name: "SAGA",
                 category: "impact-service",
                 categoryLabel: "Impact & Service",
                 icon: "fa-rainbow",
                 color: "bg-violet-500",
                 description: "Provides a safe, welcoming space for LGBTQ+ students and allies to connect and support one another.",
-                meeting: "Select dates (see Schoology), 3:30pm - 4:30pm",
+                meeting: "Late Start Tuesdays, 3:30pm - 4:30pm",
                 location: "Room 286",
                 advisor: "Al Eschenbrenner",
                 commitment: "Low",
-                day: "any",
+                day: "Tuesday",
                 tags: ["culture", "community", "support", "social"],
                 popular: false
             },
@@ -1415,7 +1459,7 @@
                 description: "Form bands and rehearse rock classics for live performances, building musicianship and stage presence.",
                 meeting: "Thursdays, 3:30pm - 4:45pm",
                 location: "Room 169A (Music Dept)",
-                advisor: "Mike Benshish",
+                advisor: "Mike Benshish, Karolina Las",
                 commitment: "Medium",
                 day: "Thursday",
                 tags: ["music", "performance", "band"],
@@ -2343,3 +2387,5 @@
     </script>
 </body>
 </html>
+chs-club-match-current-updates.html
+HTML
